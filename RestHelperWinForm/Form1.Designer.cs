@@ -38,28 +38,19 @@
             this.msgTxt = new System.Windows.Forms.TextBox();
             this.btOK = new System.Windows.Forms.Button();
             this.btNo = new System.Windows.Forms.Button();
-            this.lbMsg = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dtDotask = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtCompletetask = new System.Windows.Forms.DataGridView();
+            this.btnNew = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtDotask)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtCompletetask)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -73,6 +64,7 @@
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
+            this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick_1);
             // 
             // contextMenuStrip1
@@ -100,15 +92,17 @@
             // msgTxt
             // 
             this.msgTxt.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.msgTxt.ForeColor = System.Drawing.Color.Goldenrod;
             this.msgTxt.Location = new System.Drawing.Point(37, 8);
             this.msgTxt.Multiline = true;
             this.msgTxt.Name = "msgTxt";
+            this.msgTxt.ReadOnly = true;
             this.msgTxt.Size = new System.Drawing.Size(738, 37);
             this.msgTxt.TabIndex = 1;
             // 
             // btOK
             // 
-            this.btOK.Location = new System.Drawing.Point(346, 301);
+            this.btOK.Location = new System.Drawing.Point(373, 301);
             this.btOK.Name = "btOK";
             this.btOK.Size = new System.Drawing.Size(137, 33);
             this.btOK.TabIndex = 2;
@@ -126,14 +120,6 @@
             this.btNo.UseVisualStyleBackColor = true;
             this.btNo.Click += new System.EventHandler(this.btNo_Click);
             // 
-            // lbMsg
-            // 
-            this.lbMsg.AutoSize = true;
-            this.lbMsg.Location = new System.Drawing.Point(35, 9);
-            this.lbMsg.Name = "lbMsg";
-            this.lbMsg.Size = new System.Drawing.Size(0, 12);
-            this.lbMsg.TabIndex = 3;
-            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -145,18 +131,13 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // dataGridView3
+            // dtDotask
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
-            this.dataGridView3.Location = new System.Drawing.Point(6, 6);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(718, 206);
-            this.dataGridView3.TabIndex = 5;
+            this.dtDotask.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtDotask.Location = new System.Drawing.Point(6, 6);
+            this.dtDotask.Name = "dtDotask";
+            this.dtDotask.Size = new System.Drawing.Size(718, 206);
+            this.dtDotask.TabIndex = 5;
             // 
             // tabControl1
             // 
@@ -170,7 +151,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dataGridView3);
+            this.tabPage1.Controls.Add(this.dtDotask);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -181,7 +162,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.dtCompletetask);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -190,68 +171,22 @@
             this.tabPage2.Text = "已办任务";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // dtCompletetask
             // 
-            this.button1.Location = new System.Drawing.Point(161, 301);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 33);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "新建任务";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btOK_Click);
+            this.dtCompletetask.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtCompletetask.Location = new System.Drawing.Point(6, 6);
+            this.dtCompletetask.Name = "dtCompletetask";
+            this.dtCompletetask.Size = new System.Drawing.Size(718, 206);
+            this.dtCompletetask.TabIndex = 6;
             // 
-            // Column1
+            // btnNew
             // 
-            this.Column1.HeaderText = "任务名称";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "开始日期";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "结束日期";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "进度";
-            this.Column4.Name = "Column4";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(718, 206);
-            this.dataGridView1.TabIndex = 6;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "任务名称";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "开始日期";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "结束日期";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "进度";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.btnNew.Location = new System.Drawing.Point(161, 301);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(137, 33);
+            this.btnNew.TabIndex = 2;
+            this.btnNew.Text = "新建任务";
+            this.btnNew.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -260,9 +195,8 @@
             this.ClientSize = new System.Drawing.Size(807, 346);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.lbMsg);
             this.Controls.Add(this.btNo);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btOK);
             this.Controls.Add(this.msgTxt);
             this.Name = "Form1";
@@ -270,11 +204,11 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtDotask)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtCompletetask)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -289,23 +223,14 @@
         private System.Windows.Forms.TextBox msgTxt;
         private System.Windows.Forms.Button btOK;
         private System.Windows.Forms.Button btNo;
-        private System.Windows.Forms.Label lbMsg;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ToolStripMenuItem 查看ToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dtDotask;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.DataGridView dtCompletetask;
     }
 }
 

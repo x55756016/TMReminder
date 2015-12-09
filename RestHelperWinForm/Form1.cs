@@ -18,13 +18,15 @@ namespace RestHelperUI
             InitializeComponent();
             timer1.Start();
             //notifyIcon1.Visible = false;
+           DataTable dt= ReadTask.ReadTaskData();
+           dtDotask.DataSource = dt;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             DateTime dtnow = DateTime.Now;
 
-            lbMsg.Text = "距离上次休息已经：" + (dtnow - dtpre).Hours + "小时，" + (dtnow - dtpre).Minutes + "分钟，" + (dtnow - dtpre).Seconds + "秒";
+            this.Text = "距离上次休息已经：" + (dtnow - dtpre).Hours + "小时，" + (dtnow - dtpre).Minutes + "分钟，" + (dtnow - dtpre).Seconds + "秒";
             if ((dtnow - dtpre).Hours >= 2)
             {
                 dtpre = DateTime.Now;
@@ -109,6 +111,12 @@ namespace RestHelperUI
         }
 
         private void 查看ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            this.Visible = true;
+        }
+
+        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
             this.Visible = true;
