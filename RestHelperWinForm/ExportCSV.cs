@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RestHelperUI
 {
-    class ExportCSV
+    class CsvHelper
     {
         public void savecsv(DataTable dt, string filename)
         {

@@ -23,6 +23,7 @@ namespace RestHelperUI
        public DateTime dtStart;
        public DateTime dtEnd;
        public double progresss;
+       public string taskContent;
 
 
 

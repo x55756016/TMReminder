@@ -14,5 +14,23 @@ namespace RestHelperUI
         {
             InitializeComponent();
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TaskClass NewTask = new TaskClass();
+                NewTask.taskid = Guid.NewGuid().ToString();
+                NewTask.orderNumber = int.Parse(txtorderNumber.Text);
+                NewTask.taskName = txttaskName.Text;
+                NewTask.dtStart = dtStart.Value;
+                NewTask.dtEnd = dtEnd.Value;
+                NewTask.taskContent = txtTaskContent.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

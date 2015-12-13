@@ -187,6 +187,7 @@
             this.btnNew.TabIndex = 2;
             this.btnNew.Text = "新建任务";
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // Form1
             // 

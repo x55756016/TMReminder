@@ -121,5 +121,11 @@ namespace RestHelperUI
             this.WindowState = FormWindowState.Normal;
             this.Visible = true;
         }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            AddTaskForm FormTask = new AddTaskForm();
+            FormTask.Show();
+        }
     }
 }
