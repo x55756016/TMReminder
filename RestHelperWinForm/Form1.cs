@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using RestHelperUI.DBUtility.SQLite.SQLiteSamples;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace RestHelperUI
             InitializeComponent();
             timer1.Start();
             //notifyIcon1.Visible = false;
-           DataTable dt= ReadTask.ReadTaskData();
+            DataTable dt = TaskDBHelper.ReadTaskData();
            dtDotask.DataSource = dt;
         }
 
