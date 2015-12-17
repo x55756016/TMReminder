@@ -31,7 +31,7 @@ namespace RestHelperUI
             if ((dtnow - dtpre).Hours >= 2)
             {
                 dtpre = DateTime.Now;
-                this.msgTxt.Text = "已辛苦工作超过2个小时了，赶紧喝口水，到处走走运动一下......";
+                this.msgTxt.Text = "警告：已连续坐着工作超过2个小时，喝口水，走动一下，休息一会";
                 this.Show();
             }
         }

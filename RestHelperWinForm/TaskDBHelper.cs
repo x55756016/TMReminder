@@ -22,12 +22,15 @@ namespace RestHelperUI
            public class TaskDBHelper
             {
                 //数据库连接
-               static SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=SqlLite\taskDB.s3db;Version=3;");
+               static string dbfilePath = System.AppDomain.CurrentDomain.BaseDirectory+@"SqlLite\taskDB.s3db"; 
+               static SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source="+dbfilePath+";Version=3;");
+//               SQLiteConnectionStringBuilder sqlitestring = new SQLiteConnectionStringBuilder();
+//sqlitestring.DataSource = "C:\\data.db";
 
                 public TaskDBHelper()
                 {
                     //createNewDatabase();
-                    connectToDatabase();
+                    //connectToDatabase();
                     //createTable();
                     //fillTable();
                     //printHighscores();
@@ -40,11 +43,11 @@ namespace RestHelperUI
                 //}
 
                 //创建一个连接到指定数据库
-                void connectToDatabase()
-                {
-                    m_dbConnection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
-                    m_dbConnection.Open();
-                }
+                //void connectToDatabase()
+                //{
+                //    m_dbConnection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
+                //    m_dbConnection.Open();
+                //}
 
                 ////在指定数据库中创建一个table
                 //void createTable()
@@ -55,19 +58,19 @@ namespace RestHelperUI
                 //}
 
                 //插入一些数据
-                void fillTable()
+                public static int AddTask(TaskClass NewTask)
                 {
-                    string sql = "insert into highscores (name, score) values ('Me', 3000)";
+                    string sql = @"insert into Task (taskid, orderNumber,taskName,dtStart,dtEnd,progresss,taskContent) values (
+                    '" + NewTask.taskid + @"',"
+                       + NewTask.orderNumber + @", '"
+                       + NewTask.taskName + @"', '"
+                       + NewTask.dtStart.ToString("yyyy-MM-dd HH:mm:ss") + @"', '"
+                       + NewTask.dtEnd.ToString("yyyy-MM-dd HH:mm:ss") + @"', '"
+                       + NewTask.progresss + @"', '"
+                       + NewTask.taskContent + @"')";
                     SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
-                    command.ExecuteNonQuery();
-
-                    sql = "insert into highscores (name, score) values ('Myself', 6000)";
-                    command = new SQLiteCommand(sql, m_dbConnection);
-                    command.ExecuteNonQuery();
-
-                    sql = "insert into highscores (name, score) values ('And I', 9001)";
-                    command = new SQLiteCommand(sql, m_dbConnection);
-                    command.ExecuteNonQuery();
+                   int i= command.ExecuteNonQuery();
+                   return i;
                 }
 
                 //使用sql查询语句，并显示结果

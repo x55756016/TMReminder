@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestHelperUI.DBUtility.SQLite.SQLiteSamples;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,11 +22,29 @@ namespace RestHelperUI
             {
                 TaskClass NewTask = new TaskClass();
                 NewTask.taskid = Guid.NewGuid().ToString();
-                NewTask.orderNumber = int.Parse(txtorderNumber.Text);
+
+                int ordernumber = 0;
+                int.TryParse(txtorderNumber.Text, out ordernumber);
+                NewTask.orderNumber = ordernumber;
+
                 NewTask.taskName = txttaskName.Text;
                 NewTask.dtStart = dtStart.Value;
                 NewTask.dtEnd = dtEnd.Value;
+
+                double progresss = 0;
+                double.TryParse(txtprogresss.Text, out progresss);
+                NewTask.progresss = progresss;
+
                 NewTask.taskContent = txtTaskContent.Text;
+
+                if (TaskDBHelper.AddTask(NewTask) > 0)
+                {
+                    MessageBox.Show("添加任务成功！");
+                }
+                else
+                {
+                    MessageBox.Show("添加任务失败！");
+                }
             }
             catch (Exception ex)
             {
