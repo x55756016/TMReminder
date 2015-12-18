@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SqlLite\System.Data.SQLite.dll" />
+    <Content Include="SqlLite\颈椎腰椎病.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
