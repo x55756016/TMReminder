@@ -16,14 +16,15 @@ namespace RestHelperUI
     {
         using System;
         using System.Data.SQLite;
+        using System.Data.Common;
 
         namespace SQLiteSamples
         {
            public class TaskDBHelper
             {
                 //数据库连接
-               static string dbfilePath = System.AppDomain.CurrentDomain.BaseDirectory+@"SqlLite\taskDB.s3db"; 
-               static SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source="+dbfilePath+";Version=3;");
+               static string dbfilePath = System.AppDomain.CurrentDomain.BaseDirectory+@"SqlLite\taskDB.s3db";
+               static SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=taskDB.s3db;Version=3;");
 //               SQLiteConnectionStringBuilder sqlitestring = new SQLiteConnectionStringBuilder();
 //sqlitestring.DataSource = "C:\\data.db";
 
@@ -37,25 +38,25 @@ namespace RestHelperUI
                 }
 
                 //创建一个空的数据库
-                //void createNewDatabase()
-                //{
-                //    SQLiteConnection.CreateFile("MyDatabase.sqlite");
-                //}
+               public static void createNewDatabase()
+                {
+                    SQLiteConnection.CreateFile("MyDatabase.sqlite");
+                }
 
                 //创建一个连接到指定数据库
-                //void connectToDatabase()
-                //{
-                //    m_dbConnection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
-                //    m_dbConnection.Open();
-                //}
+               public static void connectToDatabase()
+                {
+                    m_dbConnection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
+                    m_dbConnection.Open();
+                }
 
-                ////在指定数据库中创建一个table
-                //void createTable()
-                //{
-                //    string sql = "create table highscores (name varchar(20), score int)";
-                //    SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
-                //    command.ExecuteNonQuery();
-                //}
+               //在指定数据库中创建一个table
+               void createTable()
+               {
+                   string sql = "create table highscores (name varchar(20), score int)";
+                   SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+                   command.ExecuteNonQuery();
+               }
 
                 //插入一些数据
                 public static int AddTask(TaskClass NewTask)
@@ -68,8 +69,18 @@ namespace RestHelperUI
                        + NewTask.dtEnd.ToString("yyyy-MM-dd HH:mm:ss") + @"', '"
                        + NewTask.progresss + @"', '"
                        + NewTask.taskContent + @"')";
-                    SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
-                   int i= command.ExecuteNonQuery();
+
+                    int i = 0;
+
+                    DbProviderFactory fact = DbProviderFactories.GetFactory("System.Data.SQLite");
+                    using (DbConnection cnn = fact.CreateConnection())
+                    {
+                        cnn.ConnectionString = "Data Source=taskDB.s3db";
+                        cnn.Open();
+                        SQLiteCommand command = new SQLiteCommand(sql, (SQLiteConnection)cnn);
+
+                        i = command.ExecuteNonQuery();
+                    }
                    return i;
                 }
 
@@ -77,21 +88,28 @@ namespace RestHelperUI
                 public static List<TaskClass> GetTastList()
                 {
 
-                    string sql = "select * from Task order by dtStart desc";
-                    SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
-                    SQLiteDataReader reader = command.ExecuteReader();
+                    DbProviderFactory fact = DbProviderFactories.GetFactory("System.Data.SQLite");
+
                     List<TaskClass> taskList = new List<TaskClass>();
-                    while (reader.Read())
+                    using (DbConnection cnn = fact.CreateConnection())
                     {
-                        Console.WriteLine("Name: " + reader["name"] + "\tScore: " + reader["score"]);
-                        TaskClass task = new TaskClass();
-                        task.taskid = reader["taskid"].ToString();
-                        task.orderNumber = int.Parse(reader["orderNumber"].ToString());
-                        task.taskName = reader["taskName"].ToString();
-                        task.dtStart =DateTime.Parse(reader["dtStart"].ToString());
-                        task.dtEnd =DateTime.Parse(reader["dtEnd"].ToString());
-                        task.progresss =double.Parse(reader["progresss"].ToString());
-                        taskList.Add(task);
+                        cnn.ConnectionString = "Data Source=taskDB.s3db";
+                        cnn.Open();
+
+                        string sql = "select * from Task order by dtStart desc";
+                        SQLiteCommand command = new SQLiteCommand(sql, (SQLiteConnection)cnn);
+                        SQLiteDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            TaskClass task = new TaskClass();
+                            task.taskid = reader["taskid"].ToString();
+                            task.orderNumber = int.Parse(reader["orderNumber"].ToString());
+                            task.taskName = reader["taskName"].ToString();
+                            task.dtStart = DateTime.Parse(reader["dtStart"].ToString());
+                            task.dtEnd = DateTime.Parse(reader["dtEnd"].ToString());
+                            task.progresss = double.Parse(reader["progresss"].ToString());
+                            taskList.Add(task);
+                        }
                     }
                     return taskList;
                 }

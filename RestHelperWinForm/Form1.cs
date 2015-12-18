@@ -19,6 +19,8 @@ namespace RestHelperUI
             InitializeComponent();
             timer1.Start();
             //notifyIcon1.Visible = false;
+            //TaskDBHelper.createNewDatabase();
+            //return;
             DataTable dt = TaskDBHelper.ReadTaskData();
            dtDotask.DataSource = dt;
         }
