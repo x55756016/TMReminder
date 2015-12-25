@@ -78,6 +78,7 @@ namespace RestHelperUI
 
         private void btOK_Click(object sender, EventArgs e)
         {
+            reSet();
             this.Visible = false;
             this.notifyIcon1.Visible = true;
             this.Hide();

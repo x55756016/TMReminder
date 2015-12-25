@@ -23,8 +23,8 @@ namespace RestHelperUI
            public class TaskDBHelper
             {
                 //数据库连接
-               static string dbfilePath = System.AppDomain.CurrentDomain.BaseDirectory+@"SqlLite\taskDB.s3db";
-               static SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=taskDB.s3db;Version=3;");
+               //static string dbfilePath = System.AppDomain.CurrentDomain.BaseDirectory+@"SqlLite\taskDB.s3db";
+               //static SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=taskDB.s3db;Version=3;");
 //               SQLiteConnectionStringBuilder sqlitestring = new SQLiteConnectionStringBuilder();
 //sqlitestring.DataSource = "C:\\data.db";
 
@@ -44,19 +44,19 @@ namespace RestHelperUI
                 }
 
                 //创建一个连接到指定数据库
-               public static void connectToDatabase()
-                {
-                    m_dbConnection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
-                    m_dbConnection.Open();
-                }
+               //public static void connectToDatabase()
+               // {
+               //     m_dbConnection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
+               //     m_dbConnection.Open();
+               // }
 
                //在指定数据库中创建一个table
-               void createTable()
-               {
-                   string sql = "create table highscores (name varchar(20), score int)";
-                   SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
-                   command.ExecuteNonQuery();
-               }
+               //void createTable()
+               //{
+               //    string sql = "create table highscores (name varchar(20), score int)";
+               //    SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+               //    command.ExecuteNonQuery();
+               //}
 
                 //插入一些数据
                 public static int AddTask(TaskClass NewTask)

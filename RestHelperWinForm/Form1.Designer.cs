@@ -102,7 +102,7 @@
             // 
             // btOK
             // 
-            this.btOK.Location = new System.Drawing.Point(373, 301);
+            this.btOK.Location = new System.Drawing.Point(363, 517);
             this.btOK.Name = "btOK";
             this.btOK.Size = new System.Drawing.Size(137, 33);
             this.btOK.TabIndex = 2;
@@ -112,7 +112,7 @@
             // 
             // btNo
             // 
-            this.btNo.Location = new System.Drawing.Point(559, 301);
+            this.btNo.Location = new System.Drawing.Point(549, 517);
             this.btNo.Name = "btNo";
             this.btNo.Size = new System.Drawing.Size(216, 33);
             this.btNo.TabIndex = 2;
@@ -123,7 +123,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(37, 318);
+            this.checkBox1.Location = new System.Drawing.Point(27, 534);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(108, 16);
             this.checkBox1.TabIndex = 4;
@@ -136,7 +136,7 @@
             this.dtDotask.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtDotask.Location = new System.Drawing.Point(6, 6);
             this.dtDotask.Name = "dtDotask";
-            this.dtDotask.Size = new System.Drawing.Size(718, 206);
+            this.dtDotask.Size = new System.Drawing.Size(718, 422);
             this.dtDotask.TabIndex = 5;
             // 
             // tabControl1
@@ -146,7 +146,7 @@
             this.tabControl1.Location = new System.Drawing.Point(37, 51);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(738, 244);
+            this.tabControl1.Size = new System.Drawing.Size(738, 460);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -155,7 +155,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(730, 218);
+            this.tabPage1.Size = new System.Drawing.Size(730, 434);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "待办任务";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -166,7 +166,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(730, 218);
+            this.tabPage2.Size = new System.Drawing.Size(730, 434);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "已办任务";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -174,14 +174,14 @@
             // dtCompletetask
             // 
             this.dtCompletetask.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtCompletetask.Location = new System.Drawing.Point(6, 43);
+            this.dtCompletetask.Location = new System.Drawing.Point(6, 6);
             this.dtCompletetask.Name = "dtCompletetask";
-            this.dtCompletetask.Size = new System.Drawing.Size(718, 169);
+            this.dtCompletetask.Size = new System.Drawing.Size(718, 422);
             this.dtCompletetask.TabIndex = 6;
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(161, 301);
+            this.btnNew.Location = new System.Drawing.Point(151, 517);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(137, 33);
             this.btnNew.TabIndex = 2;
@@ -193,13 +193,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(807, 346);
+            this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.btNo);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btOK);
             this.Controls.Add(this.msgTxt);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
