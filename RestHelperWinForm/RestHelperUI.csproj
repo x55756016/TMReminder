@@ -108,9 +108,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SqlLite\taskDB.s3db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="SqlLite\taskDB.s3db" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SqlLite\System.Data.SQLite.dll" />
