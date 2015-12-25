@@ -144,16 +144,54 @@ namespace RestHelperUI
                     return taskList;
                 }
 
-                public static DataTable ReadTaskData(bool isCompleteTask)
+                //使用sql查询语句，并显示结果
+                public static List<TaskClass> GetAllTastList()
+                {
+
+                    DbProviderFactory fact = DbProviderFactories.GetFactory("System.Data.SQLite");
+
+                    List<TaskClass> taskList = new List<TaskClass>();
+                    using (DbConnection cnn = fact.CreateConnection())
+                    {
+                        cnn.ConnectionString = "Data Source=taskDB.s3db";
+                        cnn.Open();
+
+                        string sql = "select * from Task order by dtStart desc";
+                        SQLiteCommand command = new SQLiteCommand(sql, (SQLiteConnection)cnn);
+                        SQLiteDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            TaskClass task = new TaskClass();
+                            task.taskid = reader["taskid"].ToString();
+                            task.orderNumber = int.Parse(reader["orderNumber"].ToString());
+                            task.taskName = reader["taskName"].ToString();
+                            task.dtStart = DateTime.Parse(reader["dtStart"].ToString());
+                            task.dtEnd = DateTime.Parse(reader["dtEnd"].ToString());
+                            task.progresss = double.Parse(reader["progresss"].ToString());
+                            taskList.Add(task);
+                        }
+                    }
+                    return taskList;
+                }
+               /// <summary>
+               /// 查询待办任务
+               /// </summary>
+               /// <param name="isCompleteTask">0待办，1已办,2所有</param>
+               /// <returns></returns>
+                public static DataTable ReadTaskData(int TaskType)
                 {
                     List<TaskClass> taskList = new List<TaskClass>();
-                    if (isCompleteTask)
+                    if (TaskType==1)
                     {
                         taskList = GetCompleteTastList();
                     }
-                    else
+                    else if (TaskType == 0)
                     {
                         taskList = GetTastList();
+                    }
+                    else if (TaskType == 2)
+                    {
+                        taskList = GetAllTastList();
                     }
                     DataTable dt = new DataTable("Task");
 

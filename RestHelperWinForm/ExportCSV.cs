@@ -6,9 +6,9 @@ using System.Text;
 
 namespace RestHelperUI
 {
-    class CsvHelper
+    public class CsvHelper
     {
-        public void savecsv(DataTable dt, string filename)
+        public static void savecsv(DataTable dt, string filename)
         {
             FileStream fs = new FileStream(filename, System.IO.FileMode.Create, System.IO.FileAccess.Write);
             StreamWriter sw = new StreamWriter(fs, System.Text.Encoding.Default);

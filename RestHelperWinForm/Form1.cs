@@ -22,11 +22,8 @@ namespace RestHelperUI
         }
         private void loadData()
         {
-            DataTable dt = TaskDBHelper.ReadTaskData(false);
+            DataTable dt = TaskDBHelper.ReadTaskData(0);
             dtDotask.DataSource = dt;
-
-            DataTable dt2 = TaskDBHelper.ReadTaskData(true);
-            dtCompletetask.DataSource = dt2;
 
         }
 
@@ -148,6 +145,35 @@ namespace RestHelperUI
         {
             loadData();
             this.Show();
+        }
+
+        private void btnGetTask_Click(object sender, EventArgs e)
+        {
+            DataTable dt = TaskDBHelper.ReadTaskData(0);
+            dtDotask.DataSource = dt;
+        }
+
+        private void btnCompleteTask_Click(object sender, EventArgs e)
+        {
+            DataTable dt = TaskDBHelper.ReadTaskData(1);
+            dtDotask.DataSource = dt;
+        }
+
+        private void btnExp_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.FileName ="任务报告"+ DateTime.Now.ToString("yyyy-MM-dd");
+            saveFileDialog1.Filter = "CSV文件|*.csv";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                DataTable dt = dtDotask.DataSource as DataTable;
+                CsvHelper.savecsv(dt, saveFileDialog1.FileName);
+            }
+        }
+
+        private void btnGetAllTask_Click(object sender, EventArgs e)
+        {
+            DataTable dt = TaskDBHelper.ReadTaskData(2);
+            dtDotask.DataSource = dt;
         }
     }
 }
