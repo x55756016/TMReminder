@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dtEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtStart = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtprogresss = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -40,8 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtorderNumber = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dtStart = new System.Windows.Forms.DateTimePicker();
-            this.dtEnd = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +52,7 @@
             this.panel1.Controls.Add(this.dtStart);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.txtprogresss);
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
@@ -65,6 +67,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(456, 488);
             this.panel1.TabIndex = 16;
+            // 
+            // dtEnd
+            // 
+            this.dtEnd.Location = new System.Drawing.Point(101, 126);
+            this.dtEnd.Name = "dtEnd";
+            this.dtEnd.Size = new System.Drawing.Size(200, 21);
+            this.dtEnd.TabIndex = 29;
+            // 
+            // dtStart
+            // 
+            this.dtStart.Location = new System.Drawing.Point(101, 86);
+            this.dtStart.Name = "dtStart";
+            this.dtStart.Size = new System.Drawing.Size(200, 21);
+            this.dtStart.TabIndex = 29;
             // 
             // btnSave
             // 
@@ -86,7 +102,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 176);
+            this.label5.Location = new System.Drawing.Point(21, 172);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 16;
@@ -159,19 +175,14 @@
             this.label1.TabIndex = 21;
             this.label1.Text = "任务序号";
             // 
-            // dtStart
+            // label7
             // 
-            this.dtStart.Location = new System.Drawing.Point(101, 86);
-            this.dtStart.Name = "dtStart";
-            this.dtStart.Size = new System.Drawing.Size(200, 21);
-            this.dtStart.TabIndex = 29;
-            // 
-            // dtEnd
-            // 
-            this.dtEnd.Location = new System.Drawing.Point(101, 126);
-            this.dtEnd.Name = "dtEnd";
-            this.dtEnd.Size = new System.Drawing.Size(200, 21);
-            this.dtEnd.TabIndex = 29;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(207, 170);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(11, 12);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "%";
             // 
             // AddTaskForm
             // 
@@ -203,6 +214,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtEnd;
         private System.Windows.Forms.DateTimePicker dtStart;
+        private System.Windows.Forms.Label label7;
 
     }
 }

@@ -174,9 +174,9 @@
             // dtCompletetask
             // 
             this.dtCompletetask.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtCompletetask.Location = new System.Drawing.Point(6, 6);
+            this.dtCompletetask.Location = new System.Drawing.Point(6, 43);
             this.dtCompletetask.Name = "dtCompletetask";
-            this.dtCompletetask.Size = new System.Drawing.Size(718, 206);
+            this.dtCompletetask.Size = new System.Drawing.Size(718, 169);
             this.dtCompletetask.TabIndex = 6;
             // 
             // btnNew

@@ -11,6 +11,8 @@ namespace RestHelperUI
 {
     public partial class AddTaskForm : Form
     {
+        public delegate void BoilerLogHandler(string status);
+        public event BoilerLogHandler addComplete;
         public AddTaskForm()
         {
             InitializeComponent();
@@ -40,6 +42,7 @@ namespace RestHelperUI
                 if (TaskDBHelper.AddTask(NewTask) > 0)
                 {
                     MessageBox.Show("添加任务成功！");
+                    this.Dispose();
                 }
                 else
                 {
@@ -49,6 +52,12 @@ namespace RestHelperUI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }finally
+            {
+                if(addComplete!=null)
+                {
+                    addComplete("");
+                }
             }
         }
     }

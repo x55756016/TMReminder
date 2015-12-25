@@ -18,11 +18,16 @@ namespace RestHelperUI
             dtpre = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 30, 0);
             InitializeComponent();
             timer1.Start();
-            //notifyIcon1.Visible = false;
-            //TaskDBHelper.createNewDatabase();
-            //return;
-            DataTable dt = TaskDBHelper.ReadTaskData();
-           dtDotask.DataSource = dt;
+            loadData();
+        }
+        private void loadData()
+        {
+            DataTable dt = TaskDBHelper.ReadTaskData(false);
+            dtDotask.DataSource = dt;
+
+            DataTable dt2 = TaskDBHelper.ReadTaskData(true);
+            dtCompletetask.DataSource = dt2;
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -66,6 +71,7 @@ namespace RestHelperUI
         private void btNo_Click(object sender, EventArgs e)
         {
             dtpre = dtpre.AddMinutes(10);
+            this.msgTxt.Text = string.Empty;
             this.Visible = false;
             this.notifyIcon1.Visible = true;
         }
@@ -75,6 +81,11 @@ namespace RestHelperUI
             this.Visible = false;
             this.notifyIcon1.Visible = true;
             this.Hide();
+        }
+        private void reSet()
+        {
+            dtpre = DateTime.Now;
+            this.msgTxt.Text = string.Empty;
         }
 
         /// <summary>
@@ -129,6 +140,13 @@ namespace RestHelperUI
         {
             AddTaskForm FormTask = new AddTaskForm();
             FormTask.Show();
+            FormTask.addComplete += FormTask_addComplete;
+        }
+
+        void FormTask_addComplete(string status)
+        {
+            loadData();
+            this.Show();
         }
     }
 }

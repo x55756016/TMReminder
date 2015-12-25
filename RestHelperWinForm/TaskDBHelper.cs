@@ -96,7 +96,7 @@ namespace RestHelperUI
                         cnn.ConnectionString = "Data Source=taskDB.s3db";
                         cnn.Open();
 
-                        string sql = "select * from Task order by dtStart desc";
+                        string sql = "select * from Task  where progresss<>100  order by dtStart desc";
                         SQLiteCommand command = new SQLiteCommand(sql, (SQLiteConnection)cnn);
                         SQLiteDataReader reader = command.ExecuteReader();
                         while (reader.Read())
@@ -114,10 +114,47 @@ namespace RestHelperUI
                     return taskList;
                 }
 
-                public static DataTable ReadTaskData()
+                //使用sql查询语句，并显示结果
+                public static List<TaskClass> GetCompleteTastList()
                 {
-                    List<TaskClass> taskList=GetTastList();
 
+                    DbProviderFactory fact = DbProviderFactories.GetFactory("System.Data.SQLite");
+
+                    List<TaskClass> taskList = new List<TaskClass>();
+                    using (DbConnection cnn = fact.CreateConnection())
+                    {
+                        cnn.ConnectionString = "Data Source=taskDB.s3db";
+                        cnn.Open();
+
+                        string sql = "select * from Task where progresss==100 order by dtStart desc";
+                        SQLiteCommand command = new SQLiteCommand(sql, (SQLiteConnection)cnn);
+                        SQLiteDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            TaskClass task = new TaskClass();
+                            task.taskid = reader["taskid"].ToString();
+                            task.orderNumber = int.Parse(reader["orderNumber"].ToString());
+                            task.taskName = reader["taskName"].ToString();
+                            task.dtStart = DateTime.Parse(reader["dtStart"].ToString());
+                            task.dtEnd = DateTime.Parse(reader["dtEnd"].ToString());
+                            task.progresss = double.Parse(reader["progresss"].ToString());
+                            taskList.Add(task);
+                        }
+                    }
+                    return taskList;
+                }
+
+                public static DataTable ReadTaskData(bool isCompleteTask)
+                {
+                    List<TaskClass> taskList = new List<TaskClass>();
+                    if (isCompleteTask)
+                    {
+                        taskList = GetCompleteTastList();
+                    }
+                    else
+                    {
+                        taskList = GetTastList();
+                    }
                     DataTable dt = new DataTable("Task");
 
                     DataColumn dc1 = new DataColumn();
@@ -137,7 +174,7 @@ namespace RestHelperUI
                     dc4.DataType = typeof(DateTime);
 
                     DataColumn dc5 = new DataColumn();
-                    dc5.ColumnName = "进度";
+                    dc5.ColumnName = "进度%";
                     dc5.DataType = typeof(double);
 
                     dt.Columns.Add(dc1);
