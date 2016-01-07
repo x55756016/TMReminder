@@ -12,10 +12,13 @@ namespace RestHelperUI
 {
     public partial class Form1 : Form
     {
-        private DateTime dtpre;
+        /// <summary>
+        /// 上次休息时间
+        /// </summary>
+        private DateTime dtpreTime;
         public Form1()
         {
-            dtpre = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 30, 0);
+            dtpreTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 30, 0);
             InitializeComponent();
             timer1.Start();
             loadData();
@@ -31,10 +34,10 @@ namespace RestHelperUI
         {
             DateTime dtnow = DateTime.Now;
 
-            this.Text = "距离上次休息已经：" + (dtnow - dtpre).Hours + "小时，" + (dtnow - dtpre).Minutes + "分钟，" + (dtnow - dtpre).Seconds + "秒";
-            if ((dtnow - dtpre).Hours >= 2)
+            this.Text = "距离上次休息已经：" + (dtnow - dtpreTime).Hours + "小时，" + (dtnow - dtpreTime).Minutes + "分钟，" + (dtnow - dtpreTime).Seconds + "秒";
+            if ((dtnow - dtpreTime).Hours >= 2)
             {
-                dtpre = DateTime.Now;
+                dtpreTime = DateTime.Now;
                 this.msgTxt.Text = "警告：已连续坐着工作超过2个小时，喝口水，走动一下，休息一会";
                 this.Show();
             }
@@ -67,7 +70,7 @@ namespace RestHelperUI
 
         private void btNo_Click(object sender, EventArgs e)
         {
-            dtpre = dtpre.AddMinutes(10);
+            dtpreTime = dtpreTime.AddMinutes(10);
             this.msgTxt.Text = string.Empty;
             this.Visible = false;
             this.notifyIcon1.Visible = true;
@@ -75,14 +78,14 @@ namespace RestHelperUI
 
         private void btOK_Click(object sender, EventArgs e)
         {
-            reSet();
+            reSetpreTime();
             this.Visible = false;
             this.notifyIcon1.Visible = true;
             this.Hide();
         }
-        private void reSet()
+        private void reSetpreTime()
         {
-            dtpre = DateTime.Now;
+            dtpreTime = DateTime.Now;
             this.msgTxt.Text = string.Empty;
         }
 
@@ -99,26 +102,32 @@ namespace RestHelperUI
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
-            //设置开机自启动            
+            try
             {
-                //MessageBox.Show("设置开机自启动，需要修改注册表", "提示");
-                string path = Application.ExecutablePath;
-                RegistryKey rk = Registry.LocalMachine;
-                RegistryKey rk2 = rk.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
-                rk2.SetValue("SKR", path);
-                rk2.Close();
-                rk.Close();
-            }
-            else //取消开机自启动              
+                if (checkBox1.Checked)
+                //设置开机自启动            
+                {
+                    //MessageBox.Show("设置开机自启动，需要修改注册表", "提示");
+                    string path = Application.ExecutablePath;
+                    RegistryKey rk = Registry.LocalMachine;
+                    RegistryKey rk2 = rk.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
+                    rk2.SetValue("SKR", path);
+                    rk2.Close();
+                    rk.Close();
+                }
+                else //取消开机自启动              
+                {
+                    MessageBox.Show("取消开机自启动，需要修改注册表", "提示");
+                    string path = Application.ExecutablePath;
+                    RegistryKey rk = Registry.LocalMachine;
+                    RegistryKey rk2 = rk.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
+                    rk2.DeleteValue("SKR", false);
+                    rk2.Close();
+                    rk.Close();
+                }
+            }catch(Exception ex)
             {
-                MessageBox.Show("取消开机自启动，需要修改注册表", "提示");
-                string path = Application.ExecutablePath;
-                RegistryKey rk = Registry.LocalMachine;
-                RegistryKey rk2 = rk.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
-                rk2.DeleteValue("SKR", false);
-                rk2.Close();
-                rk.Close();
+                MessageBox.Show(ex.ToString());
             }
         }
 
