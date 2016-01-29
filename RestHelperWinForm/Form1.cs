@@ -55,6 +55,7 @@ namespace RestHelperUI
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
+            this.Visible=true;
             this.Show();
         }
 
