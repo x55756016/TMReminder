@@ -87,6 +87,9 @@
     <Compile Include="AddTaskForm.Designer.cs">
       <DependentUpon>AddTaskForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form1_Task.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1_Timer.cs">
       <SubType>Form</SubType>
     </Compile>

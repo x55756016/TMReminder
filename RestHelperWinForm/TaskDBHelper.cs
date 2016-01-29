@@ -108,6 +108,56 @@ namespace RestHelperUI
                    return i;
                 }
 
+                public static int UpdateTask(TaskClass NewTask)
+                {
+
+                    string sql = @"update Task set taskName= '" + NewTask.taskName
+                        + @"',dtStart='" + NewTask.dtStart.ToString("yyyy-MM-dd HH:mm:ss")
+                        + @"',dtEnd='" + NewTask.dtEnd.ToString("yyyy-MM-dd HH:mm:ss") 
+                        + @"',progresss='"+ NewTask.progresss 
+                        +  @"',taskContent='"+ NewTask.taskContent
+                        + @"' where orderNumber='" + NewTask.orderNumber + @"'";
+                    int i = 0;
+                    try
+                    {
+                        DbProviderFactory fact = DbProviderFactories.GetFactory("System.Data.SQLite");
+                        using (DbConnection cnn = fact.CreateConnection())
+                        {
+                            cnn.ConnectionString = "Data Source=taskDB.s3db";
+                            cnn.Open();
+                            SQLiteCommand command = new SQLiteCommand(sql, (SQLiteConnection)cnn);
+                            i = command.ExecuteNonQuery();
+                        }
+                    }catch(Exception ex)
+                    {
+
+                    }
+                    return i;
+                }
+
+                public static int DeleteTask(TaskClass NewTask)
+                {
+
+                    string sql = @"delete from Task where orderNumber='" + NewTask.orderNumber + @"'";
+                    int i = 0;
+                    try
+                    {
+                        DbProviderFactory fact = DbProviderFactories.GetFactory("System.Data.SQLite");
+                        using (DbConnection cnn = fact.CreateConnection())
+                        {
+                            cnn.ConnectionString = "Data Source=taskDB.s3db";
+                            cnn.Open();
+                            SQLiteCommand command = new SQLiteCommand(sql, (SQLiteConnection)cnn);
+                            i = command.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    return i;
+                }
+
                 //使用sql查询语句，并显示结果
                 public static List<TaskClass> GetTastList()
                 {
@@ -236,7 +286,7 @@ namespace RestHelperUI
                     dc4.DataType = typeof(DateTime);
 
                     DataColumn dc5 = new DataColumn();
-                    dc5.ColumnName = "进度%";
+                    dc5.ColumnName = "进度";
                     dc5.DataType = typeof(double);
 
                     dt.Columns.Add(dc1);

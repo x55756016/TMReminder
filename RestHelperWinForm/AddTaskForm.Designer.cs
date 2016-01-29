@@ -43,15 +43,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtorderNumber = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.btnComplete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.maskedTextBox1);
             this.panel1.Controls.Add(this.dtEnd);
             this.panel1.Controls.Add(this.dtStart);
+            this.panel1.Controls.Add(this.btnComplete);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.txtprogresss);
             this.panel1.Controls.Add(this.label7);
@@ -194,12 +194,15 @@
             this.label1.TabIndex = 21;
             this.label1.Text = "任务序号";
             // 
-            // maskedTextBox1
+            // btnComplete
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(322, 162);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 21);
-            this.maskedTextBox1.TabIndex = 29;
+            this.btnComplete.Location = new System.Drawing.Point(254, 453);
+            this.btnComplete.Name = "btnComplete";
+            this.btnComplete.Size = new System.Drawing.Size(75, 23);
+            this.btnComplete.TabIndex = 28;
+            this.btnComplete.Text = "已完成该任务";
+            this.btnComplete.UseVisualStyleBackColor = true;
+            this.btnComplete.Click += new System.EventHandler(this.btnComplete_Click);
             // 
             // AddTaskForm
             // 
@@ -209,6 +212,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "AddTaskForm";
             this.Text = "AddTaskForm";
+            this.Load += new System.EventHandler(this.AddTaskForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -232,7 +236,7 @@
         private System.Windows.Forms.DateTimePicker dtEnd;
         private System.Windows.Forms.DateTimePicker dtStart;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.Button btnComplete;
 
     }
 }

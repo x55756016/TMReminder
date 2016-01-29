@@ -153,8 +153,10 @@
             this.dtDotask.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtDotask.Location = new System.Drawing.Point(27, 98);
             this.dtDotask.Name = "dtDotask";
+            this.dtDotask.ReadOnly = true;
             this.dtDotask.Size = new System.Drawing.Size(738, 413);
             this.dtDotask.TabIndex = 6;
+            this.dtDotask.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtDotask_CellClick);
             // 
             // btnCompleteTask
             // 

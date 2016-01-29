@@ -13,7 +13,7 @@ namespace RestHelperUI
     public partial class Form1 : Form
     {
 
-        
+
         public Form1()
         {
             this.TopMost = true;
@@ -23,14 +23,9 @@ namespace RestHelperUI
             timer1.Start();
             loadData();
         }
-        private void loadData()
-        {
-            DataTable dt = TaskDBHelper.ReadTaskData(0);
-            dtDotask.DataSource = dt;
 
-        }
 
-      
+
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -63,7 +58,7 @@ namespace RestHelperUI
             this.Show();
         }
 
-      
+
 
         /// <summary>
         /// 退出事件
@@ -101,7 +96,8 @@ namespace RestHelperUI
                     rk2.Close();
                     rk.Close();
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -128,46 +124,53 @@ namespace RestHelperUI
             loadData();
             this.Show();
         }
-        /// <summary>
-        /// 查询待办任务
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnGetTask_Click(object sender, EventArgs e)
-        {
-            DataTable dt = TaskDBHelper.ReadTaskData(0);
-            dtDotask.DataSource = dt;
-        }
-        /// <summary>
-        /// 查询已办任务
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnCompleteTask_Click(object sender, EventArgs e)
-        {
-            DataTable dt = TaskDBHelper.ReadTaskData(1);
-            dtDotask.DataSource = dt;
-        }
 
-        private void btnExp_Click(object sender, EventArgs e)
+        private void dtDotask_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            saveFileDialog1.FileName ="任务报告"+ DateTime.Now.ToString("yyyy-MM-dd");
-            saveFileDialog1.Filter = "CSV文件|*.csv";
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            DataTable dt = this.dtDotask.DataSource as DataTable;
+            if (dt.Rows.Count == 0) return;
+
+            string buttonText = this.dtDotask.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            if (buttonText == "更新进度")
             {
-                DataTable dt = dtDotask.DataSource as DataTable;
-                CsvHelper.savecsv(dt, saveFileDialog1.FileName);
+                string orderNumber = this.dtDotask.Rows[e.RowIndex].Cells["任务序号"].Value.ToString();
+
+                string taskName = this.dtDotask.Rows[e.RowIndex].Cells["任务名称"].Value.ToString();
+                string dtStart = this.dtDotask.Rows[e.RowIndex].Cells["开始时间"].Value.ToString();
+                string dtEnd = this.dtDotask.Rows[e.RowIndex].Cells["结束时间"].Value.ToString();
+                string progresss = this.dtDotask.Rows[e.RowIndex].Cells["进度"].Value.ToString();
+
+
+                TaskClass task = new TaskClass();
+                task.orderNumber = int.Parse(orderNumber);
+                task.taskName = taskName;
+                task.dtStart = DateTime.Parse(dtStart);
+                task.dtEnd = DateTime.Parse(dtEnd);
+                task.progresss = double.Parse(progresss);
+
+                AddTaskForm FormTask = new AddTaskForm();
+                FormTask.NewTask = task;
+                FormTask.TopMost = true;
+                FormTask.StartPosition = FormStartPosition.CenterScreen;
+                FormTask.Show();
+                FormTask.addComplete += FormTask_addComplete;
+            }
+            if (buttonText == "删除")
+            {
+                string orderNumber = this.dtDotask.Rows[e.RowIndex].Cells["任务序号"].Value.ToString();
+                string taskName = this.dtDotask.Rows[e.RowIndex].Cells["任务名称"].Value.ToString();
+
+                TaskClass task = new TaskClass();
+                task.orderNumber = int.Parse(orderNumber);
+                task.taskName = taskName;
+                if (MessageBox.Show("确定删除任务： " + taskName+" ?", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    TaskDBHelper.DeleteTask(task);
+                    loadData();
+                }
             }
         }
-        /// <summary>
-        /// 查询所有任务
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnGetAllTask_Click(object sender, EventArgs e)
-        {
-            DataTable dt = TaskDBHelper.ReadTaskData(2);
-            dtDotask.DataSource = dt;
-        }
+
+
     }
 }
