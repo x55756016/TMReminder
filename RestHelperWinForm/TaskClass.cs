@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 
 namespace RestHelperUI
-{
+{ 
    public class TaskClass
     {
        public TaskClass()
