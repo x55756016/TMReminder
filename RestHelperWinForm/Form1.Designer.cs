@@ -59,7 +59,7 @@
             // 
             this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Text = "办公室健康助手";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick_1);
@@ -99,7 +99,7 @@
             // 
             // btOK
             // 
-            this.btOK.Location = new System.Drawing.Point(363, 517);
+            this.btOK.Location = new System.Drawing.Point(606, 517);
             this.btOK.Name = "btOK";
             this.btOK.Size = new System.Drawing.Size(137, 33);
             this.btOK.TabIndex = 2;
@@ -109,9 +109,9 @@
             // 
             // btNo
             // 
-            this.btNo.Location = new System.Drawing.Point(549, 517);
+            this.btNo.Location = new System.Drawing.Point(141, 520);
             this.btNo.Name = "btNo";
-            this.btNo.Size = new System.Drawing.Size(216, 33);
+            this.btNo.Size = new System.Drawing.Size(190, 33);
             this.btNo.TabIndex = 2;
             this.btNo.Text = "忙着呢，10分钟后再提醒我";
             this.btNo.UseVisualStyleBackColor = true;
@@ -130,11 +130,11 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(151, 517);
+            this.btnNew.Location = new System.Drawing.Point(450, 53);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(137, 33);
+            this.btnNew.Size = new System.Drawing.Size(90, 33);
             this.btnNew.TabIndex = 2;
-            this.btnNew.Text = "新建任务";
+            this.btnNew.Text = "新建待办任务";
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
@@ -203,7 +203,7 @@
             this.Controls.Add(this.msgTxt);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "办公室健康助手";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.contextMenuStrip1.ResumeLayout(false);

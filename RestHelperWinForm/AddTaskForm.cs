@@ -13,9 +13,16 @@ namespace RestHelperUI
     {
         public delegate void BoilerLogHandler(string status);
         public event BoilerLogHandler addComplete;
+
+        private int ordernumber = 0;
         public AddTaskForm()
         {
             InitializeComponent();
+
+            ordernumber = TaskDBHelper.GetMaxNumber();
+            txtorderNumber.Text = ordernumber.ToString();
+            dtStart.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 30, 0);
+            dtEnd.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 17, 30, 0);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -24,9 +31,6 @@ namespace RestHelperUI
             {
                 TaskClass NewTask = new TaskClass();
                 NewTask.taskid = Guid.NewGuid().ToString();
-
-                int ordernumber = 0;
-                int.TryParse(txtorderNumber.Text, out ordernumber);
                 NewTask.orderNumber = ordernumber;
 
                 NewTask.taskName = txttaskName.Text;
@@ -41,7 +45,7 @@ namespace RestHelperUI
 
                 if (TaskDBHelper.AddTask(NewTask) > 0)
                 {
-                    MessageBox.Show("添加任务成功！");
+                    //MessageBox.Show("添加任务成功！");
                     this.Dispose();
                 }
                 else

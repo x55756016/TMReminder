@@ -57,6 +57,30 @@ namespace RestHelperUI
                //    SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
                //    command.ExecuteNonQuery();
                //}
+               public static int GetMaxNumber()
+               {
+                   string sql = @"select max(orderNumber) from Task";
+
+                   int i = 0;
+
+                   DbProviderFactory fact = DbProviderFactories.GetFactory("System.Data.SQLite");
+                   using (DbConnection cnn = fact.CreateConnection())
+                   {
+                       cnn.ConnectionString = "Data Source=taskDB.s3db";
+                       cnn.Open();
+                       SQLiteCommand command = new SQLiteCommand(sql, (SQLiteConnection)cnn);
+                       SQLiteDataReader reader = command.ExecuteReader();
+                       while (reader.Read())
+                       {
+                           string iresult =reader[0].ToString();
+                           if(!string.IsNullOrEmpty(iresult))
+                           {
+                               i = int.Parse(iresult)+1;
+                           }
+                       }
+                   }
+                   return i;
+               }
 
                 //插入一些数据
                 public static int AddTask(TaskClass NewTask)

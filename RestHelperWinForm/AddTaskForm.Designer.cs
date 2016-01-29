@@ -33,6 +33,7 @@
             this.dtStart = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtprogresss = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,12 +43,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtorderNumber = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.maskedTextBox1);
             this.panel1.Controls.Add(this.dtEnd);
             this.panel1.Controls.Add(this.dtStart);
             this.panel1.Controls.Add(this.btnSave);
@@ -70,21 +72,27 @@
             // 
             // dtEnd
             // 
+            this.dtEnd.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.dtEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtEnd.Location = new System.Drawing.Point(101, 126);
             this.dtEnd.Name = "dtEnd";
-            this.dtEnd.Size = new System.Drawing.Size(200, 21);
-            this.dtEnd.TabIndex = 29;
+            this.dtEnd.ShowUpDown = true;
+            this.dtEnd.Size = new System.Drawing.Size(155, 21);
+            this.dtEnd.TabIndex = 2;
             // 
             // dtStart
             // 
+            this.dtStart.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.dtStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtStart.Location = new System.Drawing.Point(101, 86);
             this.dtStart.Name = "dtStart";
-            this.dtStart.Size = new System.Drawing.Size(200, 21);
-            this.dtStart.TabIndex = 29;
+            this.dtStart.ShowUpDown = true;
+            this.dtStart.Size = new System.Drawing.Size(155, 21);
+            this.dtStart.TabIndex = 1;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(258, 17);
+            this.btnSave.Location = new System.Drawing.Point(355, 453);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 28;
@@ -97,7 +105,17 @@
             this.txtprogresss.Location = new System.Drawing.Point(101, 166);
             this.txtprogresss.Name = "txtprogresss";
             this.txtprogresss.Size = new System.Drawing.Size(100, 21);
-            this.txtprogresss.TabIndex = 22;
+            this.txtprogresss.TabIndex = 4;
+            this.txtprogresss.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(207, 170);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(11, 12);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "%";
             // 
             // label5
             // 
@@ -128,16 +146,16 @@
             // 
             // txtTaskContent
             // 
-            this.txtTaskContent.Location = new System.Drawing.Point(23, 264);
+            this.txtTaskContent.Location = new System.Drawing.Point(23, 220);
             this.txtTaskContent.Multiline = true;
             this.txtTaskContent.Name = "txtTaskContent";
             this.txtTaskContent.Size = new System.Drawing.Size(407, 201);
-            this.txtTaskContent.TabIndex = 25;
+            this.txtTaskContent.TabIndex = 3;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 229);
+            this.label6.Location = new System.Drawing.Point(21, 205);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 19;
@@ -147,8 +165,8 @@
             // 
             this.txttaskName.Location = new System.Drawing.Point(101, 54);
             this.txttaskName.Name = "txttaskName";
-            this.txttaskName.Size = new System.Drawing.Size(100, 21);
-            this.txttaskName.TabIndex = 26;
+            this.txttaskName.Size = new System.Drawing.Size(329, 21);
+            this.txttaskName.TabIndex = 0;
             // 
             // label2
             // 
@@ -163,6 +181,7 @@
             // 
             this.txtorderNumber.Location = new System.Drawing.Point(101, 17);
             this.txtorderNumber.Name = "txtorderNumber";
+            this.txtorderNumber.ReadOnly = true;
             this.txtorderNumber.Size = new System.Drawing.Size(100, 21);
             this.txtorderNumber.TabIndex = 27;
             // 
@@ -175,14 +194,12 @@
             this.label1.TabIndex = 21;
             this.label1.Text = "任务序号";
             // 
-            // label7
+            // maskedTextBox1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(207, 170);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(11, 12);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "%";
+            this.maskedTextBox1.Location = new System.Drawing.Point(322, 162);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 21);
+            this.maskedTextBox1.TabIndex = 29;
             // 
             // AddTaskForm
             // 
@@ -215,6 +232,7 @@
         private System.Windows.Forms.DateTimePicker dtEnd;
         private System.Windows.Forms.DateTimePicker dtStart;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
 
     }
 }

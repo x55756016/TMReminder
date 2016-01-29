@@ -12,12 +12,12 @@ namespace RestHelperUI
 {
     public partial class Form1 : Form
     {
-        /// <summary>
-        /// 上次休息时间
-        /// </summary>
-        private DateTime dtpreTime;
+
+        
         public Form1()
         {
+            this.TopMost = true;
+            this.StartPosition = FormStartPosition.CenterScreen;
             dtpreTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 30, 0);
             InitializeComponent();
             timer1.Start();
@@ -30,18 +30,7 @@ namespace RestHelperUI
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            DateTime dtnow = DateTime.Now;
-
-            this.Text = "距离上次休息已经：" + (dtnow - dtpreTime).Hours + "小时，" + (dtnow - dtpreTime).Minutes + "分钟，" + (dtnow - dtpreTime).Seconds + "秒";
-            if ((dtnow - dtpreTime).Hours >= 2)
-            {
-                dtpreTime = DateTime.Now;
-                this.msgTxt.Text = "警告：已连续坐着工作超过2个小时，喝口水，走动一下，休息一会";
-                this.Show();
-            }
-        }
+      
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -68,26 +57,13 @@ namespace RestHelperUI
             }
         }
 
-        private void btNo_Click(object sender, EventArgs e)
+        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
-            dtpreTime = dtpreTime.AddMinutes(10);
-            this.msgTxt.Text = string.Empty;
-            this.Visible = false;
-            this.notifyIcon1.Visible = true;
+            this.WindowState = FormWindowState.Normal;
+            this.Show();
         }
 
-        private void btOK_Click(object sender, EventArgs e)
-        {
-            reSetpreTime();
-            this.Visible = false;
-            this.notifyIcon1.Visible = true;
-            this.Hide();
-        }
-        private void reSetpreTime()
-        {
-            dtpreTime = DateTime.Now;
-            this.msgTxt.Text = string.Empty;
-        }
+      
 
         /// <summary>
         /// 退出事件
@@ -137,15 +113,12 @@ namespace RestHelperUI
             this.Visible = true;
         }
 
-        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Normal;
-            this.Visible = true;
-        }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
             AddTaskForm FormTask = new AddTaskForm();
+            FormTask.TopMost = true;
+            FormTask.StartPosition = FormStartPosition.CenterScreen;
             FormTask.Show();
             FormTask.addComplete += FormTask_addComplete;
         }
@@ -155,13 +128,21 @@ namespace RestHelperUI
             loadData();
             this.Show();
         }
-
+        /// <summary>
+        /// 查询待办任务
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGetTask_Click(object sender, EventArgs e)
         {
             DataTable dt = TaskDBHelper.ReadTaskData(0);
             dtDotask.DataSource = dt;
         }
-
+        /// <summary>
+        /// 查询已办任务
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCompleteTask_Click(object sender, EventArgs e)
         {
             DataTable dt = TaskDBHelper.ReadTaskData(1);
@@ -178,7 +159,11 @@ namespace RestHelperUI
                 CsvHelper.savecsv(dt, saveFileDialog1.FileName);
             }
         }
-
+        /// <summary>
+        /// 查询所有任务
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGetAllTask_Click(object sender, EventArgs e)
         {
             DataTable dt = TaskDBHelper.ReadTaskData(2);
