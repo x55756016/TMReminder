@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
+using System.Windows.Forms;
 
 namespace RestHelperUI
 {
@@ -20,9 +22,14 @@ namespace RestHelperUI
             if (TempSecond == 0)
             {          
                 if ((dtnow - dtpreTime).Hours >= 2)
-                {
+                {                    
                     this.msgTxt.Text = "警告：已连续坐着工作超过2个小时，喝口水，走动一下，休息一会";
                     this.msgTxt.ForeColor = System.Drawing.Color.Red;
+                    this.Location = new Point(200, 200);
+                    this.StartPosition = FormStartPosition.Manual;
+                    this.Height =640;
+                    this.Width = 798;
+                    this.WindowState = FormWindowState.Normal;
                     this.Show();
                 }else
                 {
