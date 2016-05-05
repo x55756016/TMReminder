@@ -39,22 +39,7 @@ namespace RestHelperUI
             this.Text = "距离上次休息已经：" + (dtnow - dtpreTime).Hours + "小时，" + (dtnow - dtpreTime).Minutes + "分钟，延后" + TempSecond + "秒后提醒";
         }
 
-        private void btNo_Click(object sender, EventArgs e)
-        {
-            dtpreTime = dtpreTime.AddMinutes(10);
-            this.msgTxt.Text = string.Empty;
-            this.Visible = false;
-            this.notifyIcon1.Visible = true;
-            TempSecond = 60 * 10;
-        }
 
-        private void btOK_Click(object sender, EventArgs e)
-        {
-            reSetpreTime();
-            this.Visible = false;
-            this.notifyIcon1.Visible = true;
-            this.Hide();
-        }
         private void reSetpreTime()
         {
             dtpreTime = DateTime.Now;

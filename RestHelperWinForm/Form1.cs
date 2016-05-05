@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Security.Principal;
 using System.Text;
 using System.Windows.Forms;
 
@@ -76,6 +77,12 @@ namespace RestHelperUI
         {
             try
             {
+                if (IsAdministrator())
+                {
+                    MessageBox.Show("非管理员账户，无法设置自动启动", "提示");
+                    return;
+                }
+                
                 if (checkBox1.Checked)
                 //设置开机自启动            
                 {
@@ -89,7 +96,7 @@ namespace RestHelperUI
                 }
                 else //取消开机自启动              
                 {
-                    MessageBox.Show("取消开机自启动，需要修改注册表", "提示");
+                   
                     string path = Application.ExecutablePath;
                     RegistryKey rk = Registry.LocalMachine;
                     RegistryKey rk2 = rk.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
@@ -102,6 +109,13 @@ namespace RestHelperUI
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        public static bool IsAdministrator()
+        {
+            WindowsIdentity identity = WindowsIdentity.GetCurrent();
+            WindowsPrincipal principal = new WindowsPrincipal(identity);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
 
         private void 查看ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -170,6 +184,23 @@ namespace RestHelperUI
                     loadData();
                 }
             }
+        }
+
+        private void btNo_Click(object sender, EventArgs e)
+        {
+            dtpreTime = dtpreTime.AddMinutes(10);
+            this.msgTxt.Text = string.Empty;
+            this.Visible = false;
+            this.notifyIcon1.Visible = true;
+            TempSecond = 60 * 10;
+        }
+
+        private void btOK_Click(object sender, EventArgs e)
+        {
+            reSetpreTime();
+            this.Visible = false;
+            this.notifyIcon1.Visible = true;
+            this.Hide();
         }
 
 

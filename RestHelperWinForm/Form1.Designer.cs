@@ -46,8 +46,14 @@
             this.btnExp = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnGetAllTask = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtDotask)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -90,7 +96,7 @@
             // 
             this.msgTxt.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.msgTxt.ForeColor = System.Drawing.Color.Goldenrod;
-            this.msgTxt.Location = new System.Drawing.Point(27, 8);
+            this.msgTxt.Location = new System.Drawing.Point(4, 11);
             this.msgTxt.Multiline = true;
             this.msgTxt.Name = "msgTxt";
             this.msgTxt.ReadOnly = true;
@@ -99,7 +105,7 @@
             // 
             // btOK
             // 
-            this.btOK.Location = new System.Drawing.Point(606, 517);
+            this.btOK.Location = new System.Drawing.Point(592, 39);
             this.btOK.Name = "btOK";
             this.btOK.Size = new System.Drawing.Size(137, 33);
             this.btOK.TabIndex = 2;
@@ -109,7 +115,7 @@
             // 
             // btNo
             // 
-            this.btNo.Location = new System.Drawing.Point(141, 520);
+            this.btNo.Location = new System.Drawing.Point(127, 42);
             this.btNo.Name = "btNo";
             this.btNo.Size = new System.Drawing.Size(190, 33);
             this.btNo.TabIndex = 2;
@@ -120,7 +126,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(27, 534);
+            this.checkBox1.Location = new System.Drawing.Point(13, 56);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(108, 16);
             this.checkBox1.TabIndex = 4;
@@ -130,7 +136,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(450, 53);
+            this.btnNew.Location = new System.Drawing.Point(427, 56);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(90, 33);
             this.btnNew.TabIndex = 2;
@@ -140,7 +146,7 @@
             // 
             // btnGetTask
             // 
-            this.btnGetTask.Location = new System.Drawing.Point(30, 53);
+            this.btnGetTask.Location = new System.Drawing.Point(7, 56);
             this.btnGetTask.Name = "btnGetTask";
             this.btnGetTask.Size = new System.Drawing.Size(93, 31);
             this.btnGetTask.TabIndex = 2;
@@ -151,16 +157,17 @@
             // dtDotask
             // 
             this.dtDotask.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtDotask.Location = new System.Drawing.Point(27, 98);
+            this.dtDotask.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtDotask.Location = new System.Drawing.Point(0, 0);
             this.dtDotask.Name = "dtDotask";
             this.dtDotask.ReadOnly = true;
-            this.dtDotask.Size = new System.Drawing.Size(738, 413);
+            this.dtDotask.Size = new System.Drawing.Size(782, 402);
             this.dtDotask.TabIndex = 6;
             this.dtDotask.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtDotask_CellClick);
             // 
             // btnCompleteTask
             // 
-            this.btnCompleteTask.Location = new System.Drawing.Point(129, 53);
+            this.btnCompleteTask.Location = new System.Drawing.Point(106, 56);
             this.btnCompleteTask.Name = "btnCompleteTask";
             this.btnCompleteTask.Size = new System.Drawing.Size(98, 31);
             this.btnCompleteTask.TabIndex = 2;
@@ -170,7 +177,7 @@
             // 
             // btnExp
             // 
-            this.btnExp.Location = new System.Drawing.Point(337, 53);
+            this.btnExp.Location = new System.Drawing.Point(314, 56);
             this.btnExp.Name = "btnExp";
             this.btnExp.Size = new System.Drawing.Size(98, 31);
             this.btnExp.TabIndex = 2;
@@ -180,7 +187,7 @@
             // 
             // btnGetAllTask
             // 
-            this.btnGetAllTask.Location = new System.Drawing.Point(233, 53);
+            this.btnGetAllTask.Location = new System.Drawing.Point(210, 56);
             this.btnGetAllTask.Name = "btnGetAllTask";
             this.btnGetAllTask.Size = new System.Drawing.Size(98, 31);
             this.btnGetAllTask.TabIndex = 2;
@@ -188,21 +195,48 @@
             this.btnGetAllTask.UseVisualStyleBackColor = true;
             this.btnGetAllTask.Click += new System.EventHandler(this.btnGetAllTask_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnNew);
+            this.panel1.Controls.Add(this.msgTxt);
+            this.panel1.Controls.Add(this.btnGetTask);
+            this.panel1.Controls.Add(this.btnCompleteTask);
+            this.panel1.Controls.Add(this.btnGetAllTask);
+            this.panel1.Controls.Add(this.btnExp);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(782, 100);
+            this.panel1.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btOK);
+            this.panel2.Controls.Add(this.btNo);
+            this.panel2.Controls.Add(this.checkBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 502);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(782, 100);
+            this.panel2.TabIndex = 8;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dtDotask);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 100);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(782, 402);
+            this.panel3.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 562);
-            this.Controls.Add(this.dtDotask);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.btNo);
-            this.Controls.Add(this.btnExp);
-            this.Controls.Add(this.btnGetAllTask);
-            this.Controls.Add(this.btnCompleteTask);
-            this.Controls.Add(this.btnGetTask);
-            this.Controls.Add(this.btnNew);
-            this.Controls.Add(this.btOK);
-            this.Controls.Add(this.msgTxt);
+            this.ClientSize = new System.Drawing.Size(782, 602);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "办公室健康助手";
@@ -210,8 +244,12 @@
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtDotask)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -233,6 +271,9 @@
         private System.Windows.Forms.Button btnExp;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button btnGetAllTask;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 
