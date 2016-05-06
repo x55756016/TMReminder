@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace RestHelperUI
@@ -22,9 +23,12 @@ namespace RestHelperUI
             if (TempSecond == 0)
             {          
                 if ((dtnow - dtpreTime).Hours >= 2)
-                {                    
-                    this.msgTxt.Text = "警告：已连续坐着工作超过2个小时，喝口水，走动一下，休息一会";
-                    this.msgTxt.ForeColor = System.Drawing.Color.Red;
+                {
+                    this.msgTxt.Text = "警告：已连续坐着工作超过2个小时，请休息一会，喝口水，走动一下";
+                        //+System.Environment.NewLine+"走动预防颈椎腰椎病，保护视力，喝水保护皮肤";
+                    this.msgTxt.ForeColor = Color.Red;
+                    //Thread thread = new Thread(new ThreadStart(ColorChange));
+                    //thread.Start();                 
                     FormShow();
                 }else
                 {
@@ -40,6 +44,25 @@ namespace RestHelperUI
             }
             this.Text = "距离上次休息已经：" + (dtnow - dtpreTime).Hours + "小时，" + (dtnow - dtpreTime).Minutes + "分钟，延后" + TempSecond + "秒后提醒";
         }
+        //lable字体颜色变化
+        //private void ColorChange()
+        //{
+        //    Action<Color> AsyncUIDelegate = delegate(Color nColor)
+        //    {
+        //        this.msgTxt.ForeColor = nColor;              
+        //      };
+        //    Random random = new Random();
+        //    while (true)
+        //    {
+        //        int red = random.Next(1, 256);
+        //        int green = random.Next(1, 256);
+        //        int blue = random.Next(1, 256);             
+        //        this.msgTxt.ForeColor = Color.FromArgb(red, green, blue);
+        //        msgTxt.Invoke(AsyncUIDelegate, new object[] { Color.FromArgb(red, green, blue) }); 
+        //        Thread.Sleep(5000);
+        //    }
+        //}
+
 
         private void FormShow()
         {

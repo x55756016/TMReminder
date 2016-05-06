@@ -94,14 +94,16 @@
             // 
             // msgTxt
             // 
+            this.msgTxt.BackColor = System.Drawing.Color.White;
             this.msgTxt.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.msgTxt.ForeColor = System.Drawing.Color.Goldenrod;
+            this.msgTxt.ForeColor = System.Drawing.Color.Red;
             this.msgTxt.Location = new System.Drawing.Point(4, 11);
             this.msgTxt.Multiline = true;
             this.msgTxt.Name = "msgTxt";
             this.msgTxt.ReadOnly = true;
-            this.msgTxt.Size = new System.Drawing.Size(748, 37);
+            this.msgTxt.Size = new System.Drawing.Size(748, 54);
             this.msgTxt.TabIndex = 1;
+            this.msgTxt.Text = "警告：已连续坐着工作超过2个小时，喝口水，走动一下，休息一会";
             // 
             // btOK
             // 
@@ -136,7 +138,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(427, 56);
+            this.btnNew.Location = new System.Drawing.Point(423, 71);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(90, 33);
             this.btnNew.TabIndex = 2;
@@ -146,7 +148,7 @@
             // 
             // btnGetTask
             // 
-            this.btnGetTask.Location = new System.Drawing.Point(7, 56);
+            this.btnGetTask.Location = new System.Drawing.Point(3, 71);
             this.btnGetTask.Name = "btnGetTask";
             this.btnGetTask.Size = new System.Drawing.Size(93, 31);
             this.btnGetTask.TabIndex = 2;
@@ -161,13 +163,13 @@
             this.dtDotask.Location = new System.Drawing.Point(0, 0);
             this.dtDotask.Name = "dtDotask";
             this.dtDotask.ReadOnly = true;
-            this.dtDotask.Size = new System.Drawing.Size(782, 402);
+            this.dtDotask.Size = new System.Drawing.Size(782, 398);
             this.dtDotask.TabIndex = 6;
             this.dtDotask.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtDotask_CellClick);
             // 
             // btnCompleteTask
             // 
-            this.btnCompleteTask.Location = new System.Drawing.Point(106, 56);
+            this.btnCompleteTask.Location = new System.Drawing.Point(102, 71);
             this.btnCompleteTask.Name = "btnCompleteTask";
             this.btnCompleteTask.Size = new System.Drawing.Size(98, 31);
             this.btnCompleteTask.TabIndex = 2;
@@ -177,7 +179,7 @@
             // 
             // btnExp
             // 
-            this.btnExp.Location = new System.Drawing.Point(314, 56);
+            this.btnExp.Location = new System.Drawing.Point(310, 71);
             this.btnExp.Name = "btnExp";
             this.btnExp.Size = new System.Drawing.Size(98, 31);
             this.btnExp.TabIndex = 2;
@@ -187,7 +189,7 @@
             // 
             // btnGetAllTask
             // 
-            this.btnGetAllTask.Location = new System.Drawing.Point(210, 56);
+            this.btnGetAllTask.Location = new System.Drawing.Point(206, 71);
             this.btnGetAllTask.Name = "btnGetAllTask";
             this.btnGetAllTask.Size = new System.Drawing.Size(98, 31);
             this.btnGetAllTask.TabIndex = 2;
@@ -206,7 +208,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(782, 100);
+            this.panel1.Size = new System.Drawing.Size(782, 104);
             this.panel1.TabIndex = 7;
             // 
             // panel2
@@ -224,9 +226,9 @@
             // 
             this.panel3.Controls.Add(this.dtDotask);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 100);
+            this.panel3.Location = new System.Drawing.Point(0, 104);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(782, 402);
+            this.panel3.Size = new System.Drawing.Size(782, 398);
             this.panel3.TabIndex = 9;
             // 
             // Form1
