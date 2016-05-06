@@ -90,7 +90,7 @@
             this.查看ToolStripMenuItem.Name = "查看ToolStripMenuItem";
             this.查看ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.查看ToolStripMenuItem.Text = "查看";
-            this.查看ToolStripMenuItem.Click += new System.EventHandler(this.查看ToolStripMenuItem_Click);
+            this.查看ToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // msgTxt
             // 
@@ -105,11 +105,11 @@
             // 
             // btOK
             // 
-            this.btOK.Location = new System.Drawing.Point(592, 39);
+            this.btOK.Location = new System.Drawing.Point(540, 39);
             this.btOK.Name = "btOK";
-            this.btOK.Size = new System.Drawing.Size(137, 33);
+            this.btOK.Size = new System.Drawing.Size(189, 33);
             this.btOK.TabIndex = 2;
-            this.btOK.Text = "已休息";
+            this.btOK.Text = "已休息(2小时后再提醒)";
             this.btOK.UseVisualStyleBackColor = true;
             this.btOK.Click += new System.EventHandler(this.btOK_Click);
             // 
@@ -119,7 +119,7 @@
             this.btNo.Name = "btNo";
             this.btNo.Size = new System.Drawing.Size(190, 33);
             this.btNo.TabIndex = 2;
-            this.btNo.Text = "忙着呢，10分钟后再提醒我";
+            this.btNo.Text = "忙碌(10分钟后再提醒我)";
             this.btNo.UseVisualStyleBackColor = true;
             this.btNo.Click += new System.EventHandler(this.btNo_Click);
             // 

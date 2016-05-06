@@ -25,12 +25,7 @@ namespace RestHelperUI
                 {                    
                     this.msgTxt.Text = "警告：已连续坐着工作超过2个小时，喝口水，走动一下，休息一会";
                     this.msgTxt.ForeColor = System.Drawing.Color.Red;
-                    this.Location = new Point(200, 200);
-                    this.StartPosition = FormStartPosition.Manual;
-                    this.Height =640;
-                    this.Width = 798;
-                    this.WindowState = FormWindowState.Normal;
-                    this.Show();
+                    FormShow();
                 }else
                 {
                     TimeSpan dtTemp = (dtpreTime.AddHours(2) - dtnow);
@@ -44,6 +39,16 @@ namespace RestHelperUI
                 TempSecond = TempSecond - 1;
             }
             this.Text = "距离上次休息已经：" + (dtnow - dtpreTime).Hours + "小时，" + (dtnow - dtpreTime).Minutes + "分钟，延后" + TempSecond + "秒后提醒";
+        }
+
+        private void FormShow()
+        {
+            this.Location = new Point(200, 200);
+            this.StartPosition = FormStartPosition.Manual;
+            this.Height = 640;
+            this.Width = 798;
+            this.WindowState = FormWindowState.Normal;
+            this.Show();
         }
 
 

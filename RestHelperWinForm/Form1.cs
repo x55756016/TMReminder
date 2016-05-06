@@ -55,9 +55,7 @@ namespace RestHelperUI
 
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Normal;
-            this.Visible=true;
-            this.Show();
+            FormShow();
         }
 
 
@@ -116,12 +114,6 @@ namespace RestHelperUI
             WindowsIdentity identity = WindowsIdentity.GetCurrent();
             WindowsPrincipal principal = new WindowsPrincipal(identity);
             return principal.IsInRole(WindowsBuiltInRole.Administrator);
-        }
-
-        private void 查看ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Normal;
-            this.Visible = true;
         }
 
 
@@ -201,6 +193,11 @@ namespace RestHelperUI
             this.Visible = false;
             this.notifyIcon1.Visible = true;
             this.Hide();
+        }
+
+        private void ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormShow();
         }
 
 
