@@ -107,6 +107,7 @@
             // 
             // btOK
             // 
+            this.btOK.Enabled = false;
             this.btOK.Location = new System.Drawing.Point(540, 39);
             this.btOK.Name = "btOK";
             this.btOK.Size = new System.Drawing.Size(189, 33);

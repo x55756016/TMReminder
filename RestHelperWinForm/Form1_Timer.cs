@@ -8,7 +8,8 @@ using System.Windows.Forms;
 namespace RestHelperUI
 {
     public partial class Form1
-    {   
+    {
+        private bool needRest = false;
         /// <summary>
         /// 上次休息时间
         /// </summary>
@@ -30,6 +31,9 @@ namespace RestHelperUI
                     //Thread thread = new Thread(new ThreadStart(ColorChange));
                     //thread.Start();                 
                     FormShow();
+                    needRest = true;
+                    btOK.Enabled = needRest;
+                    btNo.Enabled = needRest;
                 }else
                 {
                     TimeSpan dtTemp = (dtpreTime.AddHours(2) - dtnow);
@@ -66,11 +70,11 @@ namespace RestHelperUI
 
         private void FormShow()
         {
-            this.Location = new Point(200, 200);
             this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(200, 200);
             this.Height = 640;
             this.Width = 798;
-            this.WindowState = FormWindowState.Normal;
+            //this.WindowState = FormWindowState.Normal;
             this.Show();
         }
 
@@ -80,6 +84,9 @@ namespace RestHelperUI
             dtpreTime = DateTime.Now;
             TempSecond = 0;
             this.msgTxt.Text = string.Empty;
+            needRest = false;
+            btOK.Enabled = needRest;
+            btNo.Enabled = needRest;
         }
     }
 }

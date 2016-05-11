@@ -181,7 +181,6 @@ namespace RestHelperUI
         private void btNo_Click(object sender, EventArgs e)
         {
             dtpreTime = dtpreTime.AddMinutes(10);
-            this.msgTxt.Text = string.Empty;
             this.Visible = false;
             this.notifyIcon1.Visible = true;
             TempSecond = 60 * 10;
