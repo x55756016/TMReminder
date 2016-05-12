@@ -31,18 +31,15 @@ namespace RestHelperUI
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-            this.WindowState = FormWindowState.Minimized;
-            this.Visible = false;
+            //this.WindowState = FormWindowState.Minimized;
+            //this.Visible = false;
+            this.Hide();
             this.notifyIcon1.Visible = true;
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)//最小化      
-            {
-                this.ShowInTaskbar = false;
-                this.notifyIcon1.Visible = true;
-            }
+
         }
 
         private void notifyIcon1_MouseClick_1(object sender, MouseEventArgs e)

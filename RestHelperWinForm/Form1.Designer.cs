@@ -244,7 +244,6 @@
             this.Name = "Form1";
             this.Text = "办公室健康助手";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtDotask)).EndInit();
             this.panel1.ResumeLayout(false);
