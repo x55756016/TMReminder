@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Security.Principal;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace RestHelperUI
@@ -194,6 +195,13 @@ namespace RestHelperUI
         private void ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormShow();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            SoftUpdateHelper app = new SoftUpdateHelper();
+            app.StartCheckUpdate();
         }
 
 

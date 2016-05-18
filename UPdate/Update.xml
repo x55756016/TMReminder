@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Update>
+  <Soft Name="RestHelper">
+    <Version>1.0.1.2</Version>
+    <DownLoad>http://www.oa12.com/RestHelper/RestHelperUI.exe</DownLoad>
+  </Soft>
+</Update>

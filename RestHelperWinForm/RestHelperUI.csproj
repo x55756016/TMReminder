@@ -96,6 +96,7 @@
     <Compile Include="AddTaskForm.Designer.cs">
       <DependentUpon>AddTaskForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SoftUpdateHelper.cs" />
     <Compile Include="Form1_Task.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +160,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UPdate\UPdate.csproj">
+      <Project>{585f3d4e-0a44-4265-b936-bab7fbf8bdc7}</Project>
+      <Name>UPdate</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
