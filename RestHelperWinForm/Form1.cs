@@ -38,11 +38,6 @@ namespace RestHelperUI
             this.notifyIcon1.Visible = true;
         }
 
-        private void Form1_SizeChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void notifyIcon1_MouseClick_1(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -73,7 +68,7 @@ namespace RestHelperUI
         {
             try
             {
-                if (IsAdministrator())
+                if (!IsAdministrator())
                 {
                     MessageBox.Show("非管理员账户，无法设置自动启动", "提示");
                     return;
@@ -83,10 +78,10 @@ namespace RestHelperUI
                 //设置开机自启动            
                 {
                     //MessageBox.Show("设置开机自启动，需要修改注册表", "提示");
-                    string path = Application.ExecutablePath;
-                    RegistryKey rk = Registry.LocalMachine;
+                    string path = "\""+Application.ExecutablePath+"\"";
+                    RegistryKey rk = Registry.CurrentUser;
                     RegistryKey rk2 = rk.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
-                    rk2.SetValue("SKR", path);
+                    rk2.SetValue("RestHelper", path);
                     rk2.Close();
                     rk.Close();
                 }
@@ -94,9 +89,9 @@ namespace RestHelperUI
                 {
                    
                     string path = Application.ExecutablePath;
-                    RegistryKey rk = Registry.LocalMachine;
+                    RegistryKey rk = Registry.CurrentUser;
                     RegistryKey rk2 = rk.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
-                    rk2.DeleteValue("SKR", false);
+                    rk2.DeleteValue("RestHelper", false);
                     rk2.Close();
                     rk.Close();
                 }
