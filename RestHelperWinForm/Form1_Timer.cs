@@ -20,7 +20,7 @@ namespace RestHelperUI
         private int TempSecond = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            return;
+            //return;
             DateTime dtnow = DateTime.Now;     
             if (TempSecond == 0)
             {          
