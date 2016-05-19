@@ -22,8 +22,6 @@ namespace RestHelperUI
             this.StartPosition = FormStartPosition.CenterScreen;
             dtpreTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 30, 0);
             InitializeComponent();
-            timer1.Start();
-            loadData();
         }
 
 
@@ -194,14 +192,21 @@ namespace RestHelperUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.StartPosition = FormStartPosition.Manual;
-            this.Location = new Point(200, 200);
-            this.Height = 640;
-            this.Width = 798;
-            SoftUpdateHelper app = new SoftUpdateHelper();
-            app.StartCheckUpdate();
+            try
+            {
+                this.StartPosition = FormStartPosition.Manual;
+                this.Location = new Point(200, 200);
+                this.Height = 640;
+                this.Width = 798;
+                SoftUpdateHelper app = new SoftUpdateHelper();
+                app.StartCheckUpdate();
+                loadData();
+                timer1.Start();
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteErrLog("Form1_Load", ex.ToString());
+            }
         }
-
-
     }
 }
