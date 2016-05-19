@@ -28,7 +28,7 @@ namespace UPdate
             foreach (System.Diagnostics.Process p in ps)
             {
                 //MessageBox.Show(p.ProcessName);
-                if (p.ProcessName.ToLower() == "RestHelperUI")
+                if (p.ProcessName.ToUpper() == "RESTHELPERUI")
                 {
                     p.Kill();
                     break;
@@ -41,7 +41,7 @@ namespace UPdate
             try
             {
                 File.Move(oldpath, newpath);
-
+                label1.Text = "检测到系统已更新，正在为您自动升级，请稍后......";
                 string filename = "RestHelperUI.exe";
                 DownloadFile(downloadUrl, filename, ProgressBar_Value);
             }
@@ -80,9 +80,7 @@ namespace UPdate
             }
             client.DownloadFileCompleted += delegate(object sender, AsyncCompletedEventArgs e)
             {
-                //this.Invoke(downloadFileCompleted);
-                label1.Text = "更新完成";
-                label1.Text = "正在重新启动应用程序...";
+                label1.Text = "更新完成，正在重启动应用程序...";
                 System.Diagnostics.Process.Start(exeFileName);
                 Close();
                 Application.Exit();

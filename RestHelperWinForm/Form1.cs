@@ -199,7 +199,10 @@ namespace RestHelperUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(200, 200);
+            this.Height = 640;
+            this.Width = 798;
             SoftUpdateHelper app = new SoftUpdateHelper();
             app.StartCheckUpdate();
         }
