@@ -17,11 +17,18 @@ namespace RestHelperUI
         [STAThread]
         static void Main()
         {
+            try
+            {
+                LogHelper.WriteInfoLog("RestHelper", "开始启动");
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new Form1());
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteErrLog("Main启动 异常",ex.ToString());
+            }
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());        
-           
         }
 
     }
