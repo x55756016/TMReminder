@@ -17,6 +17,7 @@ namespace RestHelperUI
         using System;
         using System.Data.SQLite;
         using System.Data.Common;
+        using System.Windows.Forms;
 
         namespace SQLiteSamples
         {
@@ -27,6 +28,7 @@ namespace RestHelperUI
                //static SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=taskDB.s3db;Version=3;");
 //               SQLiteConnectionStringBuilder sqlitestring = new SQLiteConnectionStringBuilder();
 //sqlitestring.DataSource = "C:\\data.db";
+               static string sqlPath = "Data Source=" + Application.StartupPath + @"\taskDB.s3db";
 
                 public TaskDBHelper()
                 {
@@ -66,7 +68,7 @@ namespace RestHelperUI
                    DbProviderFactory fact = DbProviderFactories.GetFactory("System.Data.SQLite");
                    using (DbConnection cnn = fact.CreateConnection())
                    {
-                       cnn.ConnectionString = "Data Source=taskDB.s3db";
+                       cnn.ConnectionString = sqlPath;
                        cnn.Open();
                        SQLiteCommand command = new SQLiteCommand(sql, (SQLiteConnection)cnn);
                        SQLiteDataReader reader = command.ExecuteReader();
@@ -99,7 +101,7 @@ namespace RestHelperUI
                     DbProviderFactory fact = DbProviderFactories.GetFactory("System.Data.SQLite");
                     using (DbConnection cnn = fact.CreateConnection())
                     {
-                        cnn.ConnectionString = "Data Source=taskDB.s3db";
+                        cnn.ConnectionString = sqlPath;
                         cnn.Open();
                         SQLiteCommand command = new SQLiteCommand(sql, (SQLiteConnection)cnn);
 
@@ -123,7 +125,7 @@ namespace RestHelperUI
                         DbProviderFactory fact = DbProviderFactories.GetFactory("System.Data.SQLite");
                         using (DbConnection cnn = fact.CreateConnection())
                         {
-                            cnn.ConnectionString = "Data Source=taskDB.s3db";
+                            cnn.ConnectionString = sqlPath;
                             cnn.Open();
                             SQLiteCommand command = new SQLiteCommand(sql, (SQLiteConnection)cnn);
                             i = command.ExecuteNonQuery();
@@ -145,7 +147,7 @@ namespace RestHelperUI
                         DbProviderFactory fact = DbProviderFactories.GetFactory("System.Data.SQLite");
                         using (DbConnection cnn = fact.CreateConnection())
                         {
-                            cnn.ConnectionString = "Data Source=taskDB.s3db";
+                            cnn.ConnectionString = sqlPath;
                             cnn.Open();
                             SQLiteCommand command = new SQLiteCommand(sql, (SQLiteConnection)cnn);
                             i = command.ExecuteNonQuery();
@@ -167,7 +169,8 @@ namespace RestHelperUI
                     List<TaskClass> taskList = new List<TaskClass>();
                     using (DbConnection cnn = fact.CreateConnection())
                     {
-                        cnn.ConnectionString = "Data Source=taskDB.s3db";
+                        cnn.ConnectionString = sqlPath;// "Data Source=taskDB.s3db";
+                        LogHelper.WriteInfoLog("ConnectionString", sqlPath);
                         cnn.Open();
 
                         string sql = "select * from Task  where progresss<>100  order by dtStart desc";
@@ -197,7 +200,7 @@ namespace RestHelperUI
                     List<TaskClass> taskList = new List<TaskClass>();
                     using (DbConnection cnn = fact.CreateConnection())
                     {
-                        cnn.ConnectionString = "Data Source=taskDB.s3db";
+                        cnn.ConnectionString = sqlPath;
                         cnn.Open();
 
                         string sql = "select * from Task where progresss==100 order by dtStart desc";
@@ -227,7 +230,7 @@ namespace RestHelperUI
                     List<TaskClass> taskList = new List<TaskClass>();
                     using (DbConnection cnn = fact.CreateConnection())
                     {
-                        cnn.ConnectionString = "Data Source=taskDB.s3db";
+                        cnn.ConnectionString = sqlPath;
                         cnn.Open();
 
                         string sql = "select * from Task order by dtStart desc";

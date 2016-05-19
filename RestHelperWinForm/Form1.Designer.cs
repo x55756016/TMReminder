@@ -118,6 +118,7 @@
             // 
             // btNo
             // 
+            this.btNo.Enabled = false;
             this.btNo.Location = new System.Drawing.Point(127, 42);
             this.btNo.Name = "btNo";
             this.btNo.Size = new System.Drawing.Size(190, 33);
@@ -242,7 +243,7 @@
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "办公室健康助手";
+            this.Text = "今日待办事项";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);

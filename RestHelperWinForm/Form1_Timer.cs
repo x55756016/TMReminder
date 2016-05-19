@@ -47,26 +47,8 @@ namespace RestHelperUI
             {
                 TempSecond = TempSecond - 1;
             }
-            this.Text = "距离上次休息已经：" + (dtnow - dtpreTime).Hours + "小时，" + (dtnow - dtpreTime).Minutes + "分钟，延后" + TempSecond + "秒后提醒";
+            //this.Text = "距离上次休息已经：" + (dtnow - dtpreTime).Hours + "小时，" + (dtnow - dtpreTime).Minutes + "分钟，延后" + TempSecond + "秒后提醒";
         }
-        //lable字体颜色变化
-        //private void ColorChange()
-        //{
-        //    Action<Color> AsyncUIDelegate = delegate(Color nColor)
-        //    {
-        //        this.msgTxt.ForeColor = nColor;              
-        //      };
-        //    Random random = new Random();
-        //    while (true)
-        //    {
-        //        int red = random.Next(1, 256);
-        //        int green = random.Next(1, 256);
-        //        int blue = random.Next(1, 256);             
-        //        this.msgTxt.ForeColor = Color.FromArgb(red, green, blue);
-        //        msgTxt.Invoke(AsyncUIDelegate, new object[] { Color.FromArgb(red, green, blue) }); 
-        //        Thread.Sleep(5000);
-        //    }
-        //}
 
 
         private void FormShow()

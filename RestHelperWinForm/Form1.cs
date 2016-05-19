@@ -20,7 +20,7 @@ namespace RestHelperUI
         {
             this.TopMost = true;
             this.StartPosition = FormStartPosition.CenterScreen;
-            dtpreTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 30, 0);
+            dtpreTime = DateTime.Now;
             InitializeComponent();
         }
 
