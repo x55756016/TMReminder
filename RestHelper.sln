@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestHelperUI", "RestHelperWinForm\RestHelperUI.csproj", "{6E5B9FE9-A94C-4D80-9830-8717244653C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAHelper", "RestHelperWinForm\OAHelper.csproj", "{6E5B9FE9-A94C-4D80-9830-8717244653C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPdate", "UPdate\UPdate.csproj", "{585F3D4E-0A44-4265-B936-BAB7FBF8BDC7}"
 EndProject
