@@ -49,6 +49,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtDotask)).BeginInit();
             this.panel1.SuspendLayout();
@@ -108,7 +109,7 @@
             // btOK
             // 
             this.btOK.Enabled = false;
-            this.btOK.Location = new System.Drawing.Point(540, 39);
+            this.btOK.Location = new System.Drawing.Point(581, 39);
             this.btOK.Name = "btOK";
             this.btOK.Size = new System.Drawing.Size(189, 33);
             this.btOK.TabIndex = 2;
@@ -119,7 +120,7 @@
             // btNo
             // 
             this.btNo.Enabled = false;
-            this.btNo.Location = new System.Drawing.Point(127, 42);
+            this.btNo.Location = new System.Drawing.Point(361, 39);
             this.btNo.Name = "btNo";
             this.btNo.Size = new System.Drawing.Size(190, 33);
             this.btNo.TabIndex = 2;
@@ -130,7 +131,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(13, 56);
+            this.checkBox1.Location = new System.Drawing.Point(13, 20);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(108, 16);
             this.checkBox1.TabIndex = 4;
@@ -215,6 +216,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.linkLabel1);
             this.panel2.Controls.Add(this.btOK);
             this.panel2.Controls.Add(this.btNo);
             this.panel2.Controls.Add(this.checkBox1);
@@ -232,6 +234,17 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(782, 398);
             this.panel3.TabIndex = 9;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(13, 59);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(125, 12);
+            this.linkLabel1.TabIndex = 5;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "获取免费协同办公系统";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // Form1
             // 
@@ -278,6 +291,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 
