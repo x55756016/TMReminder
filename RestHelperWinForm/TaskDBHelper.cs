@@ -28,7 +28,7 @@ namespace RestHelperUI
                //static SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=taskDB.s3db;Version=3;");
 //               SQLiteConnectionStringBuilder sqlitestring = new SQLiteConnectionStringBuilder();
 //sqlitestring.DataSource = "C:\\data.db";
-               static string sqlPath = "Data Source=" + Application.StartupPath + @"\taskDB.s3db";
+               static string sqlPath = "Data Source=" + Application.StartupPath + @"\SqlLite\taskDB.s3db";
 
                 public TaskDBHelper()
                 {
