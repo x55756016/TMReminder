@@ -12,7 +12,7 @@ namespace RestHelperUI
         private void loadData()
         {
             dtDotask.Columns.Clear();
-            DataTable dt = TaskDBHelper.ReadTaskData(0);
+            DataTable dt = TaskDAL.ReadTaskData(0);
             dtDotask.DataSource = dt;
 
 
@@ -47,7 +47,7 @@ namespace RestHelperUI
         /// <param name="e"></param>
         private void btnCompleteTask_Click(object sender, EventArgs e)
         {
-            DataTable dt = TaskDBHelper.ReadTaskData(1);
+            DataTable dt = TaskDAL.ReadTaskData(1);
             dtDotask.DataSource = dt;
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace RestHelperUI
         /// <param name="e"></param>
         private void btnGetAllTask_Click(object sender, EventArgs e)
         {
-            DataTable dt = TaskDBHelper.ReadTaskData(2);
+            DataTable dt = TaskDAL.ReadTaskData(2);
             dtDotask.DataSource = dt;
         }
         /// <summary>

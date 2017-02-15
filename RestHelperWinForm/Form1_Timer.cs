@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestHelperUI.BLL;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
@@ -9,6 +10,7 @@ namespace RestHelperUI
 {
     public partial class Form1
     {
+        private bool flag;
         private bool needRest = false;
         /// <summary>
         /// 上次休息时间
@@ -46,6 +48,25 @@ namespace RestHelperUI
             else
             {
                 TempSecond = TempSecond - 1;
+            }
+
+
+            if ((DateTime.Now.Minute == 30 || DateTime.Now.Minute == 0) && flag)
+            {
+                LogHelper.WriteErrLog("执行定时任务");
+                flag = false;
+                try
+                {
+                    TimedTaskBLL.PollingTimeTask();
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.WriteErrLog(ex.ToString());
+                }
+                finally
+                {
+                    flag = true;
+                }
             }
             //this.Text = "距离上次休息已经：" + (dtnow - dtpreTime).Hours + "小时，" + (dtnow - dtpreTime).Minutes + "分钟，延后" + TempSecond + "秒后提醒";
         }

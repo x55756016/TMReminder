@@ -19,14 +19,14 @@ namespace RestHelperUI
         {
             try
             {
-                LogHelper.WriteInfoLog("RestHelper", "开始启动");
+                LogHelper.WriteErrLog("开始启动");
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Form1());
             }
             catch (Exception ex)
             {
-                LogHelper.WriteErrLog("Main启动 异常",ex.ToString());
+                LogHelper.WriteErrLog("Main启动 异常"+ex.ToString());
             }
 
         }

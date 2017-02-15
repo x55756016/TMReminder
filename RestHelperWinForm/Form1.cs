@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using RestHelperUI.DBUtility.SQLite.SQLiteSamples;
+using RestHelperUI.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -163,7 +164,7 @@ namespace RestHelperUI
                 task.taskName = taskName;
                 if (MessageBox.Show("确定删除任务： " + taskName+" ?", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    TaskDBHelper.DeleteTask(task);
+                    TaskDAL.DeleteTask(task);
                     loadData();
                 }
             }
@@ -205,7 +206,7 @@ namespace RestHelperUI
             }
             catch (Exception ex)
             {
-                LogHelper.WriteErrLog("Form1_Load", ex.ToString());
+                LogHelper.WriteErrLog("Form1_Load"+ex.ToString());
             }
         }
 

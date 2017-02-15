@@ -1,4 +1,5 @@
 ﻿using RestHelperUI.DBUtility.SQLite.SQLiteSamples;
+using RestHelperUI.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +30,7 @@ namespace RestHelperUI
                 isNewTask = true;
                 btnComplete.Visible = false;
                 NewTask = new TaskClass();
-                ordernumber = TaskDBHelper.GetMaxNumber();
+                ordernumber = TaskDAL.GetMaxNumber();
                 txtorderNumber.Text = ordernumber.ToString();
                 dtStart.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 30, 0);
                 dtEnd.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 17, 30, 0);
@@ -62,7 +63,7 @@ namespace RestHelperUI
                 {
                     NewTask.taskid = Guid.NewGuid().ToString();
 
-                    if (TaskDBHelper.AddTask(NewTask) > 0)
+                    if (TaskDAL.AddTask(NewTask) > 0)
                     {
                         //MessageBox.Show("添加任务成功！");
                         this.Dispose();
@@ -75,7 +76,7 @@ namespace RestHelperUI
                 else
                 {
                     //更新
-                    if (TaskDBHelper.UpdateTask(NewTask) > 0)
+                    if (TaskDAL.UpdateTask(NewTask) > 0)
                     {
                         this.Dispose();
                     }
@@ -105,7 +106,7 @@ namespace RestHelperUI
                 txtprogresss.Text = "100";
                 NewTask.orderNumber = ordernumber;
                 NewTask.progresss = 100;
-                if (TaskDBHelper.UpdateTask(NewTask) > 0)
+                if (TaskDAL.UpdateTask(NewTask) > 0)
                 {
                     this.Dispose();
                 }
