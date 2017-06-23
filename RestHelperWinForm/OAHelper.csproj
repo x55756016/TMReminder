@@ -105,8 +105,10 @@
     <Compile Include="AddTaskForm.Designer.cs">
       <DependentUpon>AddTaskForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BLL\TimedTaskDefineBLL.cs" />
     <Compile Include="BLL\TimedTaskBLL.cs" />
     <Compile Include="DAL\TimedTaskDAL.cs" />
+    <Compile Include="Model\CTMS_TK_TIMEDTASKDEFINE.cs" />
     <Compile Include="Model\TimedTaskDto.cs" />
     <Compile Include="SoftUpdateHelper.cs" />
     <Compile Include="Form1_Task.cs">
@@ -158,6 +160,7 @@
     <None Include="taskDB.s3db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="tools\清理系统.bat" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="silverlight.ico" />

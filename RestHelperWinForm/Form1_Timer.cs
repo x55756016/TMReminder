@@ -50,8 +50,9 @@ namespace RestHelperUI
                 TempSecond = TempSecond - 1;
             }
 
-
-            if ((DateTime.Now.Minute == 30 || DateTime.Now.Minute == 0) && flag)
+            //每分钟执行一次
+            if ((//DateTime.Now.Minute == 30 ||
+                DateTime.Now.Minute == 0) && flag)
             {
                 LogHelper.WriteErrLog("执行定时任务");
                 flag = false;
