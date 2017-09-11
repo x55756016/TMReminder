@@ -212,7 +212,7 @@ namespace RestHelperUI
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.linkLabel1.Links[0].LinkData = "http://www.oa12.com";
+            //this.linkLabel1.Links[0].LinkData = "http://www.oa12.com";
             System.Diagnostics.Process.Start(e.Link.LinkData.ToString());    
         }
     }

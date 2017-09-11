@@ -49,7 +49,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtDotask)).BeginInit();
             this.panel1.SuspendLayout();
@@ -216,7 +215,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.linkLabel1);
             this.panel2.Controls.Add(this.btOK);
             this.panel2.Controls.Add(this.btNo);
             this.panel2.Controls.Add(this.checkBox1);
@@ -234,17 +232,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(782, 398);
             this.panel3.TabIndex = 9;
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(13, 59);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(125, 12);
-            this.linkLabel1.TabIndex = 5;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "获取免费协同办公系统";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // Form1
             // 
@@ -291,7 +278,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

@@ -174,7 +174,7 @@ namespace RestHelperUI
                         LogHelper.WriteErrLog(sqlPath);
                         cnn.Open();
 
-                        string sql = "select * from Task  where progresss<>100  order by dtStart desc";
+                        string sql = "select * from Task  where progresss<>100  order by orderNumber desc";
                         SQLiteCommand command = new SQLiteCommand(sql, (SQLiteConnection)cnn);
                         SQLiteDataReader reader = command.ExecuteReader();
                         while (reader.Read())
@@ -204,7 +204,7 @@ namespace RestHelperUI
                         cnn.ConnectionString = sqlPath;
                         cnn.Open();
 
-                        string sql = "select * from Task where progresss==100 order by dtStart desc";
+                        string sql = "select * from Task where progresss==100 order by orderNumber desc";
                         SQLiteCommand command = new SQLiteCommand(sql, (SQLiteConnection)cnn);
                         SQLiteDataReader reader = command.ExecuteReader();
                         while (reader.Read())
@@ -234,7 +234,7 @@ namespace RestHelperUI
                         cnn.ConnectionString = sqlPath;
                         cnn.Open();
 
-                        string sql = "select * from Task order by dtStart desc";
+                        string sql = "select * from Task order by orderNumber desc";
                         SQLiteCommand command = new SQLiteCommand(sql, (SQLiteConnection)cnn);
                         SQLiteDataReader reader = command.ExecuteReader();
                         while (reader.Read())
