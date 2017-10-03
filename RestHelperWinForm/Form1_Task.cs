@@ -12,8 +12,21 @@ namespace RestHelperUI
         private void loadData()
         {
             dtDotask.Columns.Clear();
+
+            DataGridViewButtonColumn col_btn_Dotask = new DataGridViewButtonColumn();
+            col_btn_Dotask.HeaderText = "操作";
+            col_btn_Dotask.Text = "开始执行";//加上这两个就能显示
+            col_btn_Dotask.UseColumnTextForButtonValue = true;//
+            dtDotask.Columns.Add(col_btn_Dotask);
+
+
             DataTable dt = TaskDAL.ReadTaskData(0);
             dtDotask.DataSource = dt;
+
+
+            dtDotask.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //dtDotask.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;  
+            //dtDotask.Columns[1].FillWeight = 40;  
 
 
             DataGridViewButtonColumn col_btn_insert = new DataGridViewButtonColumn();

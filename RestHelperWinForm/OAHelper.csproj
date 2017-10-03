@@ -107,9 +107,33 @@
     </Compile>
     <Compile Include="BLL\TimedTaskDefineBLL.cs" />
     <Compile Include="BLL\TimedTaskBLL.cs" />
+    <Compile Include="chlidForm\DoTaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chlidForm\DoTaskForm.Designer.cs">
+      <DependentUpon>DoTaskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="chlidForm\Form_congratulate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chlidForm\Form_congratulate.Designer.cs">
+      <DependentUpon>Form_congratulate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="chlidForm\zjb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chlidForm\zjb.Designer.cs">
+      <DependentUpon>zjb.cs</DependentUpon>
+    </Compile>
     <Compile Include="DAL\TimedTaskDAL.cs" />
+    <Compile Include="Helper\ServerHelper.cs" />
     <Compile Include="Model\CTMS_TK_TIMEDTASKDEFINE.cs" />
     <Compile Include="Model\TimedTaskDto.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SoftUpdateHelper.cs" />
     <Compile Include="Form1_Task.cs">
       <SubType>Form</SubType>
@@ -133,19 +157,23 @@
     <EmbeddedResource Include="AddTaskForm.resx">
       <DependentUpon>AddTaskForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="chlidForm\DoTaskForm.resx">
+      <DependentUpon>DoTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="chlidForm\Form_congratulate.resx">
+      <DependentUpon>Form_congratulate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="chlidForm\zjb.resx">
+      <DependentUpon>zjb.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="App.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -158,11 +186,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="taskDB.s3db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="tools\清理系统.bat" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\timg.gif" />
+    <None Include="Resources\congratu.wav" />
     <Content Include="silverlight.ico" />
     <Content Include="SqlLite\Foundation.Log.dll" />
     <Content Include="SqlLite\System.Data.SQLite.dll" />

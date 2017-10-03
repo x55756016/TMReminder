@@ -31,7 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtEnd = new System.Windows.Forms.DateTimePicker();
             this.dtStart = new System.Windows.Forms.DateTimePicker();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnComplete = new System.Windows.Forms.Button();
             this.txtprogresss = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -43,7 +43,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtorderNumber = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnComplete = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,15 +90,15 @@
             this.dtStart.Size = new System.Drawing.Size(155, 21);
             this.dtStart.TabIndex = 1;
             // 
-            // btnSave
+            // btnComplete
             // 
-            this.btnSave.Location = new System.Drawing.Point(355, 453);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 28;
-            this.btnSave.Text = "保存";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnComplete.Location = new System.Drawing.Point(355, 444);
+            this.btnComplete.Name = "btnComplete";
+            this.btnComplete.Size = new System.Drawing.Size(75, 23);
+            this.btnComplete.TabIndex = 28;
+            this.btnComplete.Text = "已完成该任务";
+            this.btnComplete.UseVisualStyleBackColor = true;
+            this.btnComplete.Click += new System.EventHandler(this.btnComplete_Click);
             // 
             // txtprogresss
             // 
@@ -190,19 +190,19 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(21, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 21;
-            this.label1.Text = "任务序号";
+            this.label1.Text = "序号";
             // 
-            // btnComplete
+            // btnSave
             // 
-            this.btnComplete.Location = new System.Drawing.Point(254, 453);
-            this.btnComplete.Name = "btnComplete";
-            this.btnComplete.Size = new System.Drawing.Size(75, 23);
-            this.btnComplete.TabIndex = 28;
-            this.btnComplete.Text = "已完成该任务";
-            this.btnComplete.UseVisualStyleBackColor = true;
-            this.btnComplete.Click += new System.EventHandler(this.btnComplete_Click);
+            this.btnSave.Location = new System.Drawing.Point(254, 164);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 28;
+            this.btnSave.Text = "更新进度";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // AddTaskForm
             // 
@@ -222,7 +222,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtprogresss;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -237,6 +236,7 @@
         private System.Windows.Forms.DateTimePicker dtStart;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnComplete;
+        private System.Windows.Forms.Button btnSave;
 
     }
 }

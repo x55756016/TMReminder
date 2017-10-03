@@ -86,16 +86,16 @@ namespace RestHelperUI
                }
 
                 //插入一些数据
-                public static int AddTask(TaskClass NewTask)
+               public static int AddTask(TaskClass Taskobj)
                 {
                     string sql = @"insert into Task (taskid, orderNumber,taskName,dtStart,dtEnd,progresss,taskContent) values (
-                    '" + NewTask.taskid + @"',"
-                       + NewTask.orderNumber + @", '"
-                       + NewTask.taskName + @"', '"
-                       + NewTask.dtStart.ToString("yyyy-MM-dd HH:mm:ss") + @"', '"
-                       + NewTask.dtEnd.ToString("yyyy-MM-dd HH:mm:ss") + @"', '"
-                       + NewTask.progresss + @"', '"
-                       + NewTask.taskContent + @"')";
+                    '" + Taskobj.taskid + @"',"
+                       + Taskobj.orderNumber + @", '"
+                       + Taskobj.taskName + @"', '"
+                       + Taskobj.dtStart.ToString("yyyy-MM-dd HH:mm:ss") + @"', '"
+                       + Taskobj.dtEnd.ToString("yyyy-MM-dd HH:mm:ss") + @"', '"
+                       + Taskobj.progresss + @"', '"
+                       + Taskobj.taskContent + @"')";
 
                     int i = 0;
 
@@ -111,15 +111,15 @@ namespace RestHelperUI
                    return i;
                 }
 
-                public static int UpdateTask(TaskClass NewTask)
+                public static int UpdateTask(TaskClass Taskobj)
                 {
 
-                    string sql = @"update Task set taskName= '" + NewTask.taskName
-                        + @"',dtStart='" + NewTask.dtStart.ToString("yyyy-MM-dd HH:mm:ss")
-                        + @"',dtEnd='" + NewTask.dtEnd.ToString("yyyy-MM-dd HH:mm:ss") 
-                        + @"',progresss='"+ NewTask.progresss 
-                        +  @"',taskContent='"+ NewTask.taskContent
-                        + @"' where orderNumber='" + NewTask.orderNumber + @"'";
+                    string sql = @"update Task set taskName= '" + Taskobj.taskName
+                        + @"',dtStart='" + Taskobj.dtStart.ToString("yyyy-MM-dd HH:mm:ss")
+                        + @"',dtEnd='" + Taskobj.dtEnd.ToString("yyyy-MM-dd HH:mm:ss") 
+                        + @"',progresss='"+ Taskobj.progresss 
+                        +  @"',taskContent='"+ Taskobj.taskContent
+                        + @"' where orderNumber='" + Taskobj.orderNumber + @"'";
                     int i = 0;
                     try
                     {
@@ -136,6 +136,34 @@ namespace RestHelperUI
 
                     }
                     return i;
+                }
+
+                //使用sql查询语句，并显示结果
+                public static TaskClass GetTastByOrderNumber(int orderNumber)
+                {
+
+                    DbProviderFactory fact = DbProviderFactories.GetFactory("System.Data.SQLite");
+
+                    TaskClass task = new TaskClass();
+                    using (DbConnection cnn = fact.CreateConnection())
+                    {
+                        cnn.ConnectionString = sqlPath;
+                        cnn.Open();
+
+                        string sql = "select * from Task where orderNumber=" + orderNumber;
+                        SQLiteCommand command = new SQLiteCommand(sql, (SQLiteConnection)cnn);
+                        SQLiteDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            task.taskid = reader["taskid"].ToString();
+                            task.orderNumber = int.Parse(reader["orderNumber"].ToString());
+                            task.taskName = reader["taskName"].ToString();
+                            task.dtStart = DateTime.Parse(reader["dtStart"].ToString());
+                            task.dtEnd = DateTime.Parse(reader["dtEnd"].ToString());
+                            task.progresss = double.Parse(reader["progresss"].ToString());
+                        }
+                    }
+                    return task;
                 }
 
                 public static int DeleteTask(TaskClass NewTask)
@@ -274,7 +302,7 @@ namespace RestHelperUI
                     DataTable dt = new DataTable("Task");
 
                     DataColumn dc1 = new DataColumn();
-                    dc1.ColumnName = "任务序号";
+                    dc1.ColumnName = "序号";
                     dc1.DataType = typeof(int);
 
                     DataColumn dc2 = new DataColumn();
@@ -282,12 +310,12 @@ namespace RestHelperUI
                     dc2.DataType = typeof(string);
 
                     DataColumn dc3 = new DataColumn();
-                    dc3.ColumnName = "开始时间";
+                    dc3.ColumnName = "开始";
                     dc3.DataType = typeof(DateTime);
 
-                    DataColumn dc4 = new DataColumn();
-                    dc4.ColumnName = "结束时间";
-                    dc4.DataType = typeof(DateTime);
+                    //DataColumn dc4 = new DataColumn();
+                    //dc4.ColumnName = "结束时间";
+                    //dc4.DataType = typeof(DateTime);
 
                     DataColumn dc5 = new DataColumn();
                     dc5.ColumnName = "进度";
@@ -296,7 +324,7 @@ namespace RestHelperUI
                     dt.Columns.Add(dc1);
                     dt.Columns.Add(dc2);
                     dt.Columns.Add(dc3);
-                    dt.Columns.Add(dc4);
+                    //dt.Columns.Add(dc4);
                     dt.Columns.Add(dc5);
 
                     foreach (var task in taskList)
@@ -305,8 +333,8 @@ namespace RestHelperUI
                         dr[0] = task.orderNumber;
                         dr[1] = task.taskName;
                         dr[2] = task.dtStart;
-                        dr[3] = task.dtEnd;
-                        dr[4] = task.progresss;
+                        //dr[3] = task.dtEnd;
+                        dr[3] = task.progresss;
                         dt.Rows.Add(dr);
                     }
                     return dt;

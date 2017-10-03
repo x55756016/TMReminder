@@ -1,5 +1,7 @@
 ﻿using Microsoft.Win32;
+using RestHelperUI.chlidForm;
 using RestHelperUI.DBUtility.SQLite.SQLiteSamples;
+using RestHelperUI.Helper;
 using RestHelperUI.Model;
 using System;
 using System.Collections.Generic;
@@ -126,47 +128,55 @@ namespace RestHelperUI
 
         private void dtDotask_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataTable dt = this.dtDotask.DataSource as DataTable;
-            if (dt.Rows.Count == 0) return;
-
-            string buttonText = this.dtDotask.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            if (buttonText == "更新进度")
+            try
             {
-                string orderNumber = this.dtDotask.Rows[e.RowIndex].Cells["任务序号"].Value.ToString();
+                DataTable dt = this.dtDotask.DataSource as DataTable;
+                if (dt.Rows.Count == 0) return;
 
-                string taskName = this.dtDotask.Rows[e.RowIndex].Cells["任务名称"].Value.ToString();
-                string dtStart = this.dtDotask.Rows[e.RowIndex].Cells["开始时间"].Value.ToString();
-                string dtEnd = this.dtDotask.Rows[e.RowIndex].Cells["结束时间"].Value.ToString();
-                string progresss = this.dtDotask.Rows[e.RowIndex].Cells["进度"].Value.ToString();
-
-
-                TaskClass task = new TaskClass();
-                task.orderNumber = int.Parse(orderNumber);
-                task.taskName = taskName;
-                task.dtStart = DateTime.Parse(dtStart);
-                task.dtEnd = DateTime.Parse(dtEnd);
-                task.progresss = double.Parse(progresss);
-
-                AddTaskForm FormTask = new AddTaskForm();
-                FormTask.NewTask = task;
-                FormTask.TopMost = true;
-                FormTask.StartPosition = FormStartPosition.CenterScreen;
-                FormTask.Show();
-                FormTask.addComplete += FormTask_addComplete;
-            }
-            if (buttonText == "删除")
-            {
-                string orderNumber = this.dtDotask.Rows[e.RowIndex].Cells["任务序号"].Value.ToString();
-                string taskName = this.dtDotask.Rows[e.RowIndex].Cells["任务名称"].Value.ToString();
-
-                TaskClass task = new TaskClass();
-                task.orderNumber = int.Parse(orderNumber);
-                task.taskName = taskName;
-                if (MessageBox.Show("确定删除任务： " + taskName+" ?", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                string buttonText = this.dtDotask.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                if (buttonText == "更新进度")
                 {
-                    TaskDAL.DeleteTask(task);
-                    loadData();
+                    string orderNumber = this.dtDotask.Rows[e.RowIndex].Cells["序号"].Value.ToString();
+
+
+                    TaskClass task = new TaskClass();
+                    task.orderNumber = int.Parse(orderNumber);
+
+                    AddTaskForm FormTask = new AddTaskForm();
+                    FormTask.NewTask = task;
+                    FormTask.TopMost = true;
+                    FormTask.StartPosition = FormStartPosition.CenterScreen;
+                    FormTask.Show();
+                    FormTask.addComplete += FormTask_addComplete;
                 }
+                if (buttonText == "删除")
+                {
+                    string orderNumber = this.dtDotask.Rows[e.RowIndex].Cells["序号"].Value.ToString();
+                    string taskName = this.dtDotask.Rows[e.RowIndex].Cells["任务名称"].Value.ToString();
+
+                    TaskClass task = new TaskClass();
+                    task.orderNumber = int.Parse(orderNumber);
+                    task.taskName = taskName;
+                    if (MessageBox.Show("确定删除任务： " + taskName + " ?", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        TaskDAL.DeleteTask(task);
+                        loadData();
+                    }
+                }
+                if (buttonText == "开始执行")
+                {
+                    int orderNumber = int.Parse(this.dtDotask.Rows[e.RowIndex].Cells["序号"].Value.ToString());
+                    DoTaskForm doTaskForm = new DoTaskForm(this, orderNumber);
+                    doTaskForm.TopMost = true;
+                    doTaskForm.StartPosition = FormStartPosition.CenterScreen;
+                    this.Hide();
+                    doTaskForm.Show();
+
+                }
+            }
+            catch(Exception ex)
+            {
+                ServerHelper.sendLog(ex.ToString());
             }
         }
 
@@ -195,10 +205,9 @@ namespace RestHelperUI
         {
             try
             {
-                this.StartPosition = FormStartPosition.Manual;
-                this.Location = new Point(200, 200);
-                this.Height = 640;
-                this.Width = 798;
+
+                this.TopMost = true;
+                this.StartPosition = FormStartPosition.CenterScreen;
                 SoftUpdateHelper app = new SoftUpdateHelper();
                 app.StartCheckUpdate();
                 loadData();
@@ -214,6 +223,13 @@ namespace RestHelperUI
         {
             //this.linkLabel1.Links[0].LinkData = "http://www.oa12.com";
             System.Diagnostics.Process.Start(e.Link.LinkData.ToString());    
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            zjbForm zform = new zjbForm(this);
+            zform.Show();
+            this.Hide();
         }
     }
 }

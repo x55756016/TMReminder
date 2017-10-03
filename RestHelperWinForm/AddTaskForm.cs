@@ -36,6 +36,7 @@ namespace RestHelperUI
                 dtEnd.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 17, 30, 0);
             }else
             {
+                NewTask = TaskDAL.GetTastByOrderNumber(NewTask.orderNumber);
                 ordernumber = NewTask.orderNumber;
                 txtorderNumber.Text = ordernumber.ToString();
                 txttaskName.Text = NewTask.taskName;
@@ -78,6 +79,7 @@ namespace RestHelperUI
                     //更新
                     if (TaskDAL.UpdateTask(NewTask) > 0)
                     {
+                        MessageBox.Show("更新任务进度成功！");
                         this.Dispose();
                     }
                     else
@@ -101,30 +103,7 @@ namespace RestHelperUI
 
         private void btnComplete_Click(object sender, EventArgs e)
         {
-            try
-            {
-                txtprogresss.Text = "100";
-                NewTask.orderNumber = ordernumber;
-                NewTask.progresss = 100;
-                if (TaskDAL.UpdateTask(NewTask) > 0)
-                {
-                    this.Dispose();
-                }
-                else
-                {
-                    MessageBox.Show("更新任务失败！");
-                }
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                if (addComplete != null)
-                {
-                    addComplete("");
-                }
-            }
+
         }
 
     }
