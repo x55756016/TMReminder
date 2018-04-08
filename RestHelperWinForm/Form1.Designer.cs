@@ -50,11 +50,6 @@
             this.button7 = new System.Windows.Forms.Button();
             this.panelfoot = new System.Windows.Forms.Panel();
             this.panelLeft = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel_Task = new System.Windows.Forms.Panel();
@@ -251,12 +246,7 @@
             // panelLeft
             // 
             this.panelLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelLeft.Controls.Add(this.button8);
-            this.panelLeft.Controls.Add(this.button6);
-            this.panelLeft.Controls.Add(this.button5);
-            this.panelLeft.Controls.Add(this.button4);
             this.panelLeft.Controls.Add(this.button7);
-            this.panelLeft.Controls.Add(this.button3);
             this.panelLeft.Controls.Add(this.button2);
             this.panelLeft.Controls.Add(this.button1);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
@@ -265,59 +255,15 @@
             this.panelLeft.Size = new System.Drawing.Size(129, 601);
             this.panelLeft.TabIndex = 7;
             // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(12, 348);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(100, 26);
-            this.button8.TabIndex = 0;
-            this.button8.Text = "每日一歌";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(12, 297);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 26);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "热点新闻";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(12, 242);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 26);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "好茶推荐";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(12, 186);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 26);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "月老红线";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(12, 129);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 26);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "工作机会";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(12, 73);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 26);
             this.button2.TabIndex = 0;
-            this.button2.Text = "人脉圈子";
+            this.button2.Text = "记单词";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -405,14 +351,9 @@
         private System.Windows.Forms.Panel panelfoot;
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Panel panel_Task;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Panel panelBody;
         private System.Windows.Forms.DataGridView dtDotask;

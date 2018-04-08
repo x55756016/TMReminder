@@ -231,5 +231,15 @@ namespace RestHelperUI
             zform.Show();
             this.Hide();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form_paperitemADD doTaskForm = new Form_paperitemADD(this);
+                    doTaskForm.TopMost = true;
+                    doTaskForm.StartPosition = FormStartPosition.CenterScreen;
+                    this.Hide();
+                    doTaskForm.Show();
+            
+        }
     }
 }

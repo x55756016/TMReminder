@@ -87,6 +87,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>SqlLite\Foundation.Log.dll</HintPath>
     </Reference>
+    <Reference Include="Maticsoft.Common">
+      <HintPath>SqlLite\Maticsoft.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.99.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
@@ -107,6 +110,9 @@
     </Compile>
     <Compile Include="BLL\TimedTaskDefineBLL.cs" />
     <Compile Include="BLL\TimedTaskBLL.cs" />
+    <Compile Include="BLL\tm_qa_paperitem.cs" />
+    <Compile Include="BLL\tm_qa_userpaperrecord.cs" />
+    <Compile Include="BLL\tm_qa_wrongitem.cs" />
     <Compile Include="chlidForm\DoTaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,18 @@
     <Compile Include="chlidForm\Form_congratulate.Designer.cs">
       <DependentUpon>Form_congratulate.cs</DependentUpon>
     </Compile>
+    <Compile Include="chlidForm\Form_paperitemADD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chlidForm\Form_paperitemADD.Designer.cs">
+      <DependentUpon>Form_paperitemADD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="chlidForm\Form_paperitem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chlidForm\Form_paperitem.Designer.cs">
+      <DependentUpon>Form_paperitem.cs</DependentUpon>
+    </Compile>
     <Compile Include="chlidForm\zjb.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,9 +144,15 @@
       <DependentUpon>zjb.cs</DependentUpon>
     </Compile>
     <Compile Include="DAL\TimedTaskDAL.cs" />
+    <Compile Include="DAL\tm_qa_paperitem.cs" />
+    <Compile Include="DAL\tm_qa_userpaperrecord.cs" />
+    <Compile Include="DAL\tm_qa_wrongitem.cs" />
     <Compile Include="Helper\ServerHelper.cs" />
     <Compile Include="Model\CTMS_TK_TIMEDTASKDEFINE.cs" />
     <Compile Include="Model\TimedTaskDto.cs" />
+    <Compile Include="Model\tm_qa_paperitem.cs" />
+    <Compile Include="Model\tm_qa_userpaperrecord.cs" />
+    <Compile Include="Model\tm_qa_wrongitem.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -162,6 +186,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="chlidForm\Form_congratulate.resx">
       <DependentUpon>Form_congratulate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="chlidForm\Form_paperitemADD.resx">
+      <DependentUpon>Form_paperitemADD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="chlidForm\Form_paperitem.resx">
+      <DependentUpon>Form_paperitem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="chlidForm\zjb.resx">
       <DependentUpon>zjb.cs</DependentUpon>
@@ -214,6 +244,10 @@
     <ProjectReference Include="..\UPdate\UPdate.csproj">
       <Project>{585f3d4e-0a44-4265-b936-bab7fbf8bdc7}</Project>
       <Name>UPdate</Name>
+    </ProjectReference>
+    <ProjectReference Include="DBUtility\DBUtility.csproj">
+      <Project>{0988c62e-247f-471f-a183-db509c7a3839}</Project>
+      <Name>DBUtility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
