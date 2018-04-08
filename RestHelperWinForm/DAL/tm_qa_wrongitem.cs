@@ -28,8 +28,19 @@ namespace Maticsoft.DAL
 
 			return DbHelperSQLite.Exists(strSql.ToString(),parameters);
 		}
-		
-				
+
+        public bool ExistsByItemId(string ItemId)
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("select count(1) from tm_qa_wrongitem");
+			strSql.Append(" where ");
+            strSql.Append(" itemid = @ItemId  ");
+                            			SQLiteParameter[] parameters = {
+					new SQLiteParameter("@ItemId", DbType.String,50)			};
+                                        parameters[0].Value = ItemId;
+
+			return DbHelperSQLite.Exists(strSql.ToString(),parameters);
+		}
 		
 		/// <summary>
 		/// 增加一条数据
@@ -169,6 +180,85 @@ SQLiteParameter[] parameters = {
 				return null;
 			}
 		}
+
+/// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+		public Maticsoft.Model.tm_qa_wrongitem GetModelByOrderNumber(string ordernumber)
+		{
+			
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("select wrongid, itemid, ordernumber, isdelete, wrongnumber  ");			
+			strSql.Append("  from tm_qa_wrongitem ");
+            strSql.Append(" where ordernumber=@ordernumber ");
+						SQLiteParameter[] parameters = {
+					new SQLiteParameter("@ordernumber", DbType.String,50)			};
+                        parameters[0].Value = ordernumber;
+
+			
+			Maticsoft.Model.tm_qa_wrongitem model=new Maticsoft.Model.tm_qa_wrongitem();
+			DataSet ds=DbHelperSQLite.Query(strSql.ToString(),parameters);
+			
+			if(ds.Tables[0].Rows.Count>0)
+			{
+																model.wrongid= ds.Tables[0].Rows[0]["wrongid"].ToString();
+																																model.itemid= ds.Tables[0].Rows[0]["itemid"].ToString();
+																												if(ds.Tables[0].Rows[0]["ordernumber"].ToString()!="")
+				{
+					model.ordernumber=decimal.Parse(ds.Tables[0].Rows[0]["ordernumber"].ToString());
+				}
+																																				model.isdelete= ds.Tables[0].Rows[0]["isdelete"].ToString();
+																												if(ds.Tables[0].Rows[0]["wrongnumber"].ToString()!="")
+				{
+					model.wrongnumber=int.Parse(ds.Tables[0].Rows[0]["wrongnumber"].ToString());
+				}
+																														
+				return model;
+			}
+			else
+			{
+				return null;
+			}
+		}
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public Maticsoft.Model.tm_qa_wrongitem GetModelByItemid(string itemid)
+        {
+
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select wrongid, itemid, ordernumber, isdelete, wrongnumber  ");
+            strSql.Append("  from tm_qa_wrongitem ");
+            strSql.Append(" where itemid=@itemid ");
+            SQLiteParameter[] parameters = {
+					new SQLiteParameter("@itemid", DbType.String,50)			};
+            parameters[0].Value = itemid;
+
+
+            Maticsoft.Model.tm_qa_wrongitem model = new Maticsoft.Model.tm_qa_wrongitem();
+            DataSet ds = DbHelperSQLite.Query(strSql.ToString(), parameters);
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                model.wrongid = ds.Tables[0].Rows[0]["wrongid"].ToString();
+                model.itemid = ds.Tables[0].Rows[0]["itemid"].ToString();
+                if (ds.Tables[0].Rows[0]["ordernumber"].ToString() != "")
+                {
+                    model.ordernumber = decimal.Parse(ds.Tables[0].Rows[0]["ordernumber"].ToString());
+                }
+                model.isdelete = ds.Tables[0].Rows[0]["isdelete"].ToString();
+                if (ds.Tables[0].Rows[0]["wrongnumber"].ToString() != "")
+                {
+                    model.wrongnumber = int.Parse(ds.Tables[0].Rows[0]["wrongnumber"].ToString());
+                }
+
+                return model;
+            }
+            else
+            {
+                return null;
+            }
+        }
 		
 		
 		/// <summary>

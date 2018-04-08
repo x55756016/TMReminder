@@ -22,6 +22,14 @@ namespace Maticsoft.BLL {
 			return dal.Exists(wrongid);
 		}
 
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        public bool ExistsByItemId(string Itemid)
+        {
+            return dal.ExistsByItemId(Itemid);
+        }
+
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
@@ -56,7 +64,22 @@ namespace Maticsoft.BLL {
 			
 			return dal.GetModel(wrongid);
 		}
+		/// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+        public Maticsoft.Model.tm_qa_wrongitem GetModelByOrderNumber(string ordernumber)
+		{
 
+            return dal.GetModelByOrderNumber(ordernumber);
+		}
+	/// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+        public Maticsoft.Model.tm_qa_wrongitem GetModelByItemid(string itemid)
+		{
+
+            return dal.GetModelByItemid(itemid);
+		}
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
