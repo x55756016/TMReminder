@@ -158,6 +158,7 @@ namespace RestHelperUI
                             task.taskid = reader["taskid"].ToString();
                             task.orderNumber = int.Parse(reader["orderNumber"].ToString());
                             task.taskName = reader["taskName"].ToString();
+                            task.taskContent = reader["taskContent"].ToString();
                             task.dtStart = DateTime.Parse(reader["dtStart"].ToString());
                             task.dtEnd = DateTime.Parse(reader["dtEnd"].ToString());
                             task.progresss = double.Parse(reader["progresss"].ToString());
@@ -211,6 +212,7 @@ namespace RestHelperUI
                             task.taskid = reader["taskid"].ToString();
                             task.orderNumber = int.Parse(reader["orderNumber"].ToString());
                             task.taskName = reader["taskName"].ToString();
+                            task.taskContent = reader["taskContent"].ToString();
                             task.dtStart = DateTime.Parse(reader["dtStart"].ToString());
                             task.dtEnd = DateTime.Parse(reader["dtEnd"].ToString());
                             task.progresss = double.Parse(reader["progresss"].ToString());
@@ -241,6 +243,7 @@ namespace RestHelperUI
                             task.taskid = reader["taskid"].ToString();
                             task.orderNumber = int.Parse(reader["orderNumber"].ToString());
                             task.taskName = reader["taskName"].ToString();
+                            task.taskContent = reader["taskContent"].ToString();
                             task.dtStart = DateTime.Parse(reader["dtStart"].ToString());
                             task.dtEnd = DateTime.Parse(reader["dtEnd"].ToString());
                             task.progresss = double.Parse(reader["progresss"].ToString());
@@ -271,6 +274,7 @@ namespace RestHelperUI
                             task.taskid = reader["taskid"].ToString();
                             task.orderNumber = int.Parse(reader["orderNumber"].ToString());
                             task.taskName = reader["taskName"].ToString();
+                            task.taskContent = reader["taskContent"].ToString();
                             task.dtStart = DateTime.Parse(reader["dtStart"].ToString());
                             task.dtEnd = DateTime.Parse(reader["dtEnd"].ToString());
                             task.progresss = double.Parse(reader["progresss"].ToString());

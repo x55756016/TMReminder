@@ -28,7 +28,6 @@ namespace RestHelperUI
             if (NewTask == null)
             {
                 isNewTask = true;
-                btnComplete.Visible = false;
                 NewTask = new TaskClass();
                 ordernumber = TaskDAL.GetMaxNumber();
                 txtorderNumber.Text = ordernumber.ToString();
@@ -40,6 +39,7 @@ namespace RestHelperUI
                 ordernumber = NewTask.orderNumber;
                 txtorderNumber.Text = ordernumber.ToString();
                 txttaskName.Text = NewTask.taskName;
+                txtTaskContent.Text = NewTask.taskContent;
                 dtStart.Value = NewTask.dtStart;
                 dtEnd.Value = NewTask.dtEnd;
                 txtprogresss.Text = NewTask.progresss.ToString();
@@ -53,6 +53,11 @@ namespace RestHelperUI
             {
                 NewTask.orderNumber = ordernumber;
                 NewTask.taskName = txttaskName.Text;
+                if(string.IsNullOrEmpty(NewTask.taskName))
+                {
+                    MessageBox.Show("任务名称不能为空！");
+                    return;
+                }
                 NewTask.dtStart = dtStart.Value;
                 NewTask.dtEnd = dtEnd.Value;
                 NewTask.taskContent = txtTaskContent.Text;
@@ -99,11 +104,6 @@ namespace RestHelperUI
                     addComplete("");
                 }
             }
-        }
-
-        private void btnComplete_Click(object sender, EventArgs e)
-        {
-
         }
 
     }

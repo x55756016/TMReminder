@@ -19,16 +19,6 @@ namespace RestHelperUI
             col_btn_Dotask.UseColumnTextForButtonValue = true;//
             dtDotask.Columns.Add(col_btn_Dotask);
 
-
-            DataTable dt = TaskDAL.ReadTaskData(0);
-            dtDotask.DataSource = dt;
-
-
-            dtDotask.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            //dtDotask.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;  
-            //dtDotask.Columns[1].FillWeight = 40;  
-
-
             DataGridViewButtonColumn col_btn_insert = new DataGridViewButtonColumn();
             col_btn_insert.HeaderText = "操作";
             col_btn_insert.Text = "更新进度";//加上这两个就能显示
@@ -40,6 +30,16 @@ namespace RestHelperUI
             col_btn_delete.Text = "删除";//加上这两个就能显示
             col_btn_delete.UseColumnTextForButtonValue = true;//
             dtDotask.Columns.Add(col_btn_delete);
+
+
+            DataTable dt = TaskDAL.ReadTaskData(0);
+            dtDotask.DataSource = dt;
+
+
+            dtDotask.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //dtDotask.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;  
+            //dtDotask.Columns[1].FillWeight = 40;  
+
         }
 
         /// <summary>
