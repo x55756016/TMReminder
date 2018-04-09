@@ -314,7 +314,7 @@ namespace RestHelperUI
                     dc2.DataType = typeof(string);
 
                     DataColumn dc3 = new DataColumn();
-                    dc3.ColumnName = "开始";
+                    dc3.ColumnName = "开始时间";
                     dc3.DataType = typeof(DateTime);
 
                     //DataColumn dc4 = new DataColumn();
@@ -326,19 +326,19 @@ namespace RestHelperUI
                     dc5.DataType = typeof(double);
 
                     dt.Columns.Add(dc1);
-                    dt.Columns.Add(dc2);
                     dt.Columns.Add(dc3);
                     //dt.Columns.Add(dc4);
                     dt.Columns.Add(dc5);
+                    dt.Columns.Add(dc2);
 
                     foreach (var task in taskList)
                     {
                         DataRow dr = dt.NewRow();
                         dr[0] = task.orderNumber;
-                        dr[1] = task.taskName;
-                        dr[2] = task.dtStart;
+                        dr[1] = task.dtStart;
                         //dr[3] = task.dtEnd;
-                        dr[3] = task.progresss;
+                        dr[2] = task.progresss;
+                        dr[3] = task.taskName;
                         dt.Rows.Add(dr);
                     }
                     return dt;
