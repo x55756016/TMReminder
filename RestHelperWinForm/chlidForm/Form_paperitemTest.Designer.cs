@@ -28,6 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtsentence = new System.Windows.Forms.TextBox();
+            this.txtCword = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtResult = new System.Windows.Forms.TextBox();
+            this.btnSumbit = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.labResult = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtEword = new System.Windows.Forms.TextBox();
             this.btnprov = new System.Windows.Forms.Button();
@@ -35,20 +45,103 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.labordernumber = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.txtResult = new System.Windows.Forms.TextBox();
-            this.btnSumbit = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.labResult = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.txtsentence = new System.Windows.Forms.TextBox();
-            this.txtCword = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.txtsentence);
+            this.panel3.Controls.Add(this.txtCword);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 48);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(591, 62);
+            this.panel3.TabIndex = 2;
+            // 
+            // txtsentence
+            // 
+            this.txtsentence.Location = new System.Drawing.Point(98, 26);
+            this.txtsentence.Multiline = true;
+            this.txtsentence.Name = "txtsentence";
+            this.txtsentence.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtsentence.Size = new System.Drawing.Size(457, 30);
+            this.txtsentence.TabIndex = 3;
+            // 
+            // txtCword
+            // 
+            this.txtCword.Location = new System.Drawing.Point(98, 0);
+            this.txtCword.Multiline = true;
+            this.txtCword.Name = "txtCword";
+            this.txtCword.Size = new System.Drawing.Size(391, 23);
+            this.txtCword.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(27, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 12);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "例句：";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(27, 3);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "中文解释：";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txtResult);
+            this.panel2.Controls.Add(this.btnSumbit);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.labResult);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 110);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(591, 42);
+            this.panel2.TabIndex = 1;
+            // 
+            // txtResult
+            // 
+            this.txtResult.Location = new System.Drawing.Point(98, 10);
+            this.txtResult.Name = "txtResult";
+            this.txtResult.Size = new System.Drawing.Size(325, 21);
+            this.txtResult.TabIndex = 1;
+            // 
+            // btnSumbit
+            // 
+            this.btnSumbit.Location = new System.Drawing.Point(459, 6);
+            this.btnSumbit.Name = "btnSumbit";
+            this.btnSumbit.Size = new System.Drawing.Size(75, 23);
+            this.btnSumbit.TabIndex = 1;
+            this.btnSumbit.Text = "提交";
+            this.btnSumbit.UseVisualStyleBackColor = true;
+            this.btnSumbit.Click += new System.EventHandler(this.btnSumbit_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(27, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "单词：";
+            // 
+            // labResult
+            // 
+            this.labResult.AutoSize = true;
+            this.labResult.Location = new System.Drawing.Point(63, 131);
+            this.labResult.Name = "labResult";
+            this.labResult.Size = new System.Drawing.Size(0, 12);
+            this.labResult.TabIndex = 0;
             // 
             // panel1
             // 
@@ -119,98 +212,6 @@
             this.labordernumber.TabIndex = 0;
             this.labordernumber.Text = "1";
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.txtResult);
-            this.panel2.Controls.Add(this.btnSumbit);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.labResult);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 110);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(591, 42);
-            this.panel2.TabIndex = 1;
-            // 
-            // txtResult
-            // 
-            this.txtResult.Location = new System.Drawing.Point(98, 10);
-            this.txtResult.Name = "txtResult";
-            this.txtResult.Size = new System.Drawing.Size(325, 21);
-            this.txtResult.TabIndex = 1;
-            // 
-            // btnSumbit
-            // 
-            this.btnSumbit.Location = new System.Drawing.Point(459, 6);
-            this.btnSumbit.Name = "btnSumbit";
-            this.btnSumbit.Size = new System.Drawing.Size(75, 23);
-            this.btnSumbit.TabIndex = 1;
-            this.btnSumbit.Text = "提交";
-            this.btnSumbit.UseVisualStyleBackColor = true;
-            this.btnSumbit.Click += new System.EventHandler(this.btnSumbit_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(27, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "单词：";
-            // 
-            // labResult
-            // 
-            this.labResult.AutoSize = true;
-            this.labResult.Location = new System.Drawing.Point(63, 131);
-            this.labResult.Name = "labResult";
-            this.labResult.Size = new System.Drawing.Size(0, 12);
-            this.labResult.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.txtsentence);
-            this.panel3.Controls.Add(this.txtCword);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 48);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(591, 62);
-            this.panel3.TabIndex = 2;
-            // 
-            // txtsentence
-            // 
-            this.txtsentence.Location = new System.Drawing.Point(98, 26);
-            this.txtsentence.Multiline = true;
-            this.txtsentence.Name = "txtsentence";
-            this.txtsentence.Size = new System.Drawing.Size(457, 30);
-            this.txtsentence.TabIndex = 3;
-            // 
-            // txtCword
-            // 
-            this.txtCword.Location = new System.Drawing.Point(98, 0);
-            this.txtCword.Multiline = true;
-            this.txtCword.Name = "txtCword";
-            this.txtCword.Size = new System.Drawing.Size(391, 23);
-            this.txtCword.TabIndex = 3;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(27, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 12);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "例句：";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 3);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 12);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "中文解释：";
-            // 
             // Form_paperitemTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -222,12 +223,12 @@
             this.Name = "Form_paperitemTest";
             this.Text = "顺序练习";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_paperitemTest_FormClosed);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

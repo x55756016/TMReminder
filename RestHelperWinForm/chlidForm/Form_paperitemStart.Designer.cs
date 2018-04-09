@@ -113,6 +113,7 @@
             this.txtsentence.Location = new System.Drawing.Point(74, 63);
             this.txtsentence.Multiline = true;
             this.txtsentence.Name = "txtsentence";
+            this.txtsentence.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtsentence.Size = new System.Drawing.Size(457, 30);
             this.txtsentence.TabIndex = 3;
             // 
