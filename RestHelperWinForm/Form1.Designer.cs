@@ -49,16 +49,13 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.panelfoot = new System.Windows.Forms.Panel();
-            this.panelLeft = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel_Task = new System.Windows.Forms.Panel();
             this.panelBody = new System.Windows.Forms.Panel();
             this.dtDotask = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1.SuspendLayout();
             this.panelHead.SuspendLayout();
             this.panelfoot.SuspendLayout();
-            this.panelLeft.SuspendLayout();
             this.panel_Task.SuspendLayout();
             this.panelBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtDotask)).BeginInit();
@@ -199,6 +196,7 @@
             // panelHead
             // 
             this.panelHead.Controls.Add(this.button9);
+            this.panelHead.Controls.Add(this.button2);
             this.panelHead.Controls.Add(this.btnNew);
             this.panelHead.Controls.Add(this.msgTxt);
             this.panelHead.Controls.Add(this.btnGetTask);
@@ -208,56 +206,46 @@
             this.panelHead.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHead.Location = new System.Drawing.Point(0, 0);
             this.panelHead.Name = "panelHead";
-            this.panelHead.Size = new System.Drawing.Size(653, 117);
+            this.panelHead.Size = new System.Drawing.Size(782, 117);
             this.panelHead.TabIndex = 7;
             // 
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button9.ForeColor = System.Drawing.Color.Red;
-            this.button9.Location = new System.Drawing.Point(554, 11);
+            this.button9.ForeColor = System.Drawing.Color.Black;
+            this.button9.Location = new System.Drawing.Point(554, 27);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(78, 54);
+            this.button9.Size = new System.Drawing.Size(78, 24);
             this.button9.TabIndex = 3;
-            this.button9.Text = "点我预防筋骨病";
+            this.button9.Text = "运动一下";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(12, 563);
+            this.button7.Location = new System.Drawing.Point(13, 46);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(100, 26);
             this.button7.TabIndex = 0;
             this.button7.Text = "登录";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // panelfoot
             // 
+            this.panelfoot.Controls.Add(this.button7);
             this.panelfoot.Controls.Add(this.btOK);
             this.panelfoot.Controls.Add(this.btNo);
             this.panelfoot.Controls.Add(this.checkBox1);
             this.panelfoot.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelfoot.Location = new System.Drawing.Point(0, 501);
             this.panelfoot.Name = "panelfoot";
-            this.panelfoot.Size = new System.Drawing.Size(653, 100);
+            this.panelfoot.Size = new System.Drawing.Size(782, 100);
             this.panelfoot.TabIndex = 8;
-            // 
-            // panelLeft
-            // 
-            this.panelLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelLeft.Controls.Add(this.button7);
-            this.panelLeft.Controls.Add(this.button2);
-            this.panelLeft.Controls.Add(this.button1);
-            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLeft.Location = new System.Drawing.Point(0, 0);
-            this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(129, 601);
-            this.panelLeft.TabIndex = 7;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 73);
+            this.button2.Location = new System.Drawing.Point(541, 74);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 26);
             this.button2.TabIndex = 0;
@@ -265,24 +253,15 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 26);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "待办任务";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // panel_Task
             // 
             this.panel_Task.Controls.Add(this.panelBody);
             this.panel_Task.Controls.Add(this.panelHead);
             this.panel_Task.Controls.Add(this.panelfoot);
             this.panel_Task.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Task.Location = new System.Drawing.Point(129, 0);
+            this.panel_Task.Location = new System.Drawing.Point(0, 0);
             this.panel_Task.Name = "panel_Task";
-            this.panel_Task.Size = new System.Drawing.Size(653, 601);
+            this.panel_Task.Size = new System.Drawing.Size(782, 601);
             this.panel_Task.TabIndex = 7;
             // 
             // panelBody
@@ -291,7 +270,7 @@
             this.panelBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBody.Location = new System.Drawing.Point(0, 117);
             this.panelBody.Name = "panelBody";
-            this.panelBody.Size = new System.Drawing.Size(653, 384);
+            this.panelBody.Size = new System.Drawing.Size(782, 384);
             this.panelBody.TabIndex = 9;
             // 
             // dtDotask
@@ -301,7 +280,7 @@
             this.dtDotask.Location = new System.Drawing.Point(0, 0);
             this.dtDotask.Name = "dtDotask";
             this.dtDotask.ReadOnly = true;
-            this.dtDotask.Size = new System.Drawing.Size(653, 384);
+            this.dtDotask.Size = new System.Drawing.Size(782, 384);
             this.dtDotask.TabIndex = 7;
             this.dtDotask.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtDotask_CellClick);
             // 
@@ -311,7 +290,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 601);
             this.Controls.Add(this.panel_Task);
-            this.Controls.Add(this.panelLeft);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "今日待办事项";
@@ -322,7 +300,6 @@
             this.panelHead.PerformLayout();
             this.panelfoot.ResumeLayout(false);
             this.panelfoot.PerformLayout();
-            this.panelLeft.ResumeLayout(false);
             this.panel_Task.ResumeLayout(false);
             this.panelBody.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtDotask)).EndInit();
@@ -349,10 +326,8 @@
         private System.Windows.Forms.Button btnGetAllTask;
         private System.Windows.Forms.Panel panelHead;
         private System.Windows.Forms.Panel panelfoot;
-        private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Panel panel_Task;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Panel panelBody;

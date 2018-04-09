@@ -241,5 +241,11 @@ namespace RestHelperUI
             doTaskForm.Show();
 
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Form_Base f = new Form_Base();
+            f.Show();
+        }
     }
 }

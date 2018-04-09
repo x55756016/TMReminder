@@ -36,7 +36,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(90, 232);
+            this.btnAdd.Location = new System.Drawing.Point(35, 12);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(264, 232);
+            this.btnStart.Location = new System.Drawing.Point(144, 12);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 1;
@@ -56,7 +56,7 @@
             // 
             // btnWrongWord
             // 
-            this.btnWrongWord.Location = new System.Drawing.Point(594, 232);
+            this.btnWrongWord.Location = new System.Drawing.Point(354, 12);
             this.btnWrongWord.Name = "btnWrongWord";
             this.btnWrongWord.Size = new System.Drawing.Size(75, 23);
             this.btnWrongWord.TabIndex = 1;
@@ -66,7 +66,7 @@
             // 
             // btnPractise
             // 
-            this.btnPractise.Location = new System.Drawing.Point(421, 232);
+            this.btnPractise.Location = new System.Drawing.Point(258, 12);
             this.btnPractise.Name = "btnPractise";
             this.btnPractise.Size = new System.Drawing.Size(75, 23);
             this.btnPractise.TabIndex = 1;
@@ -78,7 +78,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(764, 482);
+            this.ClientSize = new System.Drawing.Size(465, 57);
             this.Controls.Add(this.btnPractise);
             this.Controls.Add(this.btnWrongWord);
             this.Controls.Add(this.btnStart);

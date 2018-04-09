@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace RestHelperUI.chlidForm
 {
-    public partial class Form_word : Form
+    public partial class Form_word : Form_Base
     {
         public Form_word()
         {

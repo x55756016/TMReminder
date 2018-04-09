@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace RestHelperUI.chlidForm
 {
-    public partial class Form_paperitemWrong : Form
+    public partial class Form_paperitemWrong : Form_Base
     {
         public Form_paperitemWrong()
         {
@@ -64,11 +64,17 @@ namespace RestHelperUI.chlidForm
         {
             clearText();
             Currentordernumber = Currentordernumber + 1;
-            tm_qa_wrongitem item = wrongBll.GetModelByOrderNumber(Currentordernumber.ToString());
-            if(item==null)
+            DbHelperSQLite.connectionString = "Data Source=" + Application.StartupPath + @"\taskDB.s3db";
+            if(Currentordernumber== DbHelperSQLite.GetMaxID("ordernumber", "tm_qa_wrongitem"))
             {
                 Currentordernumber = Currentordernumber - 1;
                 MessageBox.Show("最后一条记录！");
+                return;
+            }
+            tm_qa_wrongitem item = wrongBll.GetModelByOrderNumber(Currentordernumber.ToString());
+            if(item==null)
+            {
+                MessageBox.Show("没有找到相关记录！");
                 return;
             }
             string lastwrongid = item.wrongid;
@@ -140,6 +146,11 @@ namespace RestHelperUI.chlidForm
             txtEword.Text = string.Empty;
             txtsentence.Text = string.Empty;
             txtResult.Text = string.Empty; 
+        }
+
+        private void Form_paperitemWrong_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            fatherForm.Show();
         }
     }
 }

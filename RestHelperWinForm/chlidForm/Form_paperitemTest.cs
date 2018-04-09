@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace RestHelperUI.chlidForm
 {
-    public partial class Form_paperitemTest : Form
+    public partial class Form_paperitemTest : Form_Base
     {
         public Form_paperitemTest()
         {
@@ -61,6 +61,13 @@ namespace RestHelperUI.chlidForm
         {
             clearText();
             Currentordernumber = Currentordernumber + 1;
+            DbHelperSQLite.connectionString = "Data Source=" + Application.StartupPath + @"\taskDB.s3db";
+            if (Currentordernumber == DbHelperSQLite.GetMaxID("ordernumber", "tm_qa_paperitem"))
+            {
+                Currentordernumber = Currentordernumber - 1;
+                MessageBox.Show("最后一条记录！");
+                return;
+            }
             tm_qa_paperitem item = itembll.GetModelByOrderNumber(Currentordernumber.ToString());
             if(item==null)
             {
@@ -70,6 +77,11 @@ namespace RestHelperUI.chlidForm
             }
             string lastitemid = item.itemid;
             BindItembyId(lastitemid);
+
+            //更新用户最后一题id
+            tm_qa_userpaperrecord ur = ubll.GetModel("xiang");
+            ur.lastitemid = item.itemid;
+            ubll.Update(ur);
         }
 
         private void btnprov_Click(object sender, EventArgs e)
@@ -139,6 +151,11 @@ namespace RestHelperUI.chlidForm
             txtEword.Text = string.Empty;
             txtsentence.Text = string.Empty;
             txtResult.Text = string.Empty; 
+        }
+
+        private void Form_paperitemTest_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            fatherForm.Show();
         }
     }
 }

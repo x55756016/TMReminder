@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace RestHelperUI.chlidForm
 {
-    public partial class Form_paperitemADD : Form
+    public partial class Form_paperitemADD : Form_Base
     {
         public Form_paperitemADD()
         {

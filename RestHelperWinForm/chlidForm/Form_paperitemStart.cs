@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace RestHelperUI.chlidForm
 {
-    public partial class Form_paperitemStart : Form
+    public partial class Form_paperitemStart : Form_Base
     {
         public Form_paperitemStart()
         {
@@ -54,7 +54,8 @@ namespace RestHelperUI.chlidForm
                 txtEword.Text = item.eword;
                 txtsentence.Text = item.sentence;
             }
-            Currentordernumber = int.Parse(item.ordernumber.ToString());
+            Currentordernumber = int.Parse(item.ordernumber.ToString());         
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -79,11 +80,17 @@ namespace RestHelperUI.chlidForm
         private void btnNext_Click(object sender, EventArgs e)
         {
             Currentordernumber = Currentordernumber + 1;
-            tm_qa_paperitem item = itembll.GetModelByOrderNumber(Currentordernumber.ToString());
-            if(item==null)
+            DbHelperSQLite.connectionString = "Data Source=" + Application.StartupPath + @"\taskDB.s3db";
+            if (Currentordernumber == DbHelperSQLite.GetMaxID("ordernumber", "tm_qa_paperitem"))
             {
                 Currentordernumber = Currentordernumber - 1;
                 MessageBox.Show("最后一条记录！");
+                return;
+            }
+            tm_qa_paperitem item = itembll.GetModelByOrderNumber(Currentordernumber.ToString());
+            if(item==null)
+            {
+                MessageBox.Show("找不到相关记录！");
                 return;
             }
             string lastitemid = item.itemid;
@@ -101,6 +108,11 @@ namespace RestHelperUI.chlidForm
             }
             string lastitemid = itembll.GetModelByOrderNumber(Currentordernumber.ToString()).itemid;
             BindItembyId(lastitemid);
+        }
+
+        private void Form_paperitemStart_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            fatherForm.Show();
         }
     }
 }
