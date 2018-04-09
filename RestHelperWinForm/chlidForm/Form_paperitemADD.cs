@@ -44,7 +44,7 @@ namespace RestHelperUI.chlidForm
                 tm_qa_paperitem item = new tm_qa_paperitem();
                 item.itemid = Guid.NewGuid().ToString();
                 item.ordernumber =decimal.Parse(txtOrdernumber.Text);
-                item.eword = txtEword.Text;
+                item.eword = txtEword.Text.TrimEnd().TrimStart();
                 item.cword = txtCword.Text;
                 item.sentence = txtsentence.Text;
 

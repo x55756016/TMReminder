@@ -30,13 +30,13 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtOrdernumber = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtsentence = new System.Windows.Forms.TextBox();
             this.txtCword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtOrdernumber = new System.Windows.Forms.TextBox();
             this.txtEword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -64,6 +64,22 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(93, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "序号：";
+            // 
+            // txtOrdernumber
+            // 
+            this.txtOrdernumber.Location = new System.Drawing.Point(152, 14);
+            this.txtOrdernumber.Name = "txtOrdernumber";
+            this.txtOrdernumber.Size = new System.Drawing.Size(32, 21);
+            this.txtOrdernumber.TabIndex = 1;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.txtsentence);
@@ -83,6 +99,7 @@
             this.txtsentence.Location = new System.Drawing.Point(12, 72);
             this.txtsentence.Multiline = true;
             this.txtsentence.Name = "txtsentence";
+            this.txtsentence.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtsentence.Size = new System.Drawing.Size(457, 40);
             this.txtsentence.TabIndex = 3;
             // 
@@ -111,22 +128,6 @@
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 2;
             this.label3.Text = "中文解释：";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(93, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "序号：";
-            // 
-            // txtOrdernumber
-            // 
-            this.txtOrdernumber.Location = new System.Drawing.Point(152, 14);
-            this.txtOrdernumber.Name = "txtOrdernumber";
-            this.txtOrdernumber.Size = new System.Drawing.Size(32, 21);
-            this.txtOrdernumber.TabIndex = 1;
             // 
             // txtEword
             // 
