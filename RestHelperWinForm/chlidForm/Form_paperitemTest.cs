@@ -41,6 +41,7 @@ namespace RestHelperUI.chlidForm
                 lastitemid = itembll.GetModelByOrderNumber(Currentordernumber.ToString()).itemid;
             }
             BindItembyId(lastitemid);
+            txtResult.Focus();
         }
 
         private void BindItembyId(string itemid)
@@ -69,7 +70,7 @@ namespace RestHelperUI.chlidForm
                 return;
             }
             tm_qa_paperitem item = itembll.GetModelByOrderNumber(Currentordernumber.ToString());
-            if(item==null)
+            if (item == null)
             {
                 Currentordernumber = Currentordernumber - 1;
                 MessageBox.Show("最后一条记录！");
@@ -78,10 +79,27 @@ namespace RestHelperUI.chlidForm
             string lastitemid = item.itemid;
             BindItembyId(lastitemid);
 
+            UPdateUserData();
+        }
+
+        private void UPdateUserData()
+        {
+            tm_qa_paperitem item = itembll.GetModelByOrderNumber(Currentordernumber.ToString());
             //更新用户最后一题id
             tm_qa_userpaperrecord ur = ubll.GetModel("xiang");
-            ur.lastitemid = item.itemid;
-            ubll.Update(ur);
+            if (ur != null)
+            {
+                ur.lastitemid = item.itemid;
+                ubll.Update(ur);
+            }
+            else
+            {
+                ur = new tm_qa_userpaperrecord();
+                ur.recordid = Guid.NewGuid().ToString();
+                ur.lastitemid = item.itemid;
+                ubll.Add(ur);
+
+            }
         }
 
         private void btnprov_Click(object sender, EventArgs e)
@@ -110,7 +128,9 @@ namespace RestHelperUI.chlidForm
                 labResult.Text = "回答错误！";
                 addToWrongDb();
             }
-            
+            UPdateUserData();
+
+            txtResult.Focus();
         }
 
         private void addToWrongDb()
@@ -141,6 +161,7 @@ namespace RestHelperUI.chlidForm
                 MessageBox.Show(ex.ToString());
             }
         }
+
 
         private void clearText()
         {

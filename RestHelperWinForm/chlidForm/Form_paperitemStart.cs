@@ -54,27 +54,9 @@ namespace RestHelperUI.chlidForm
                 txtEword.Text = item.eword;
                 txtsentence.Text = item.sentence;
             }
-            Currentordernumber = int.Parse(item.ordernumber.ToString());         
+            Currentordernumber = int.Parse(item.ordernumber.ToString());
 
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            tm_qa_paperitem item = new tm_qa_paperitem();
-            item.itemid = Guid.NewGuid().ToString();
-            item.ordernumber = DbHelperSQLite.GetMaxID("ordernumber", "tm_qa_paperitem");
-            item.eword = txtEword.Text;
-            item.cword = txtCword.Text;
-            item.sentence = txtsentence.Text;
-
-            tm_qa_paperitemBLL bll = new tm_qa_paperitemBLL();
-            bll.Add(item);
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            tm_qa_paperitemBLL bll = new tm_qa_paperitemBLL();
-            bll.Delete("");
+            btnNext.Focus();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -95,6 +77,7 @@ namespace RestHelperUI.chlidForm
             }
             string lastitemid = item.itemid;
             BindItembyId(lastitemid);
+
         }
 
         private void btnprov_Click(object sender, EventArgs e)

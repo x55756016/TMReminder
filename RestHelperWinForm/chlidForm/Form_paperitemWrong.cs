@@ -25,22 +25,30 @@ namespace RestHelperUI.chlidForm
         tm_qa_wrongitemBLL wrongBll;
         public Form_paperitemWrong(Form form)
         {
-            fatherForm = form;
-            InitializeComponent();
-            txtEword.Visible = false;
-            ubll = new tm_qa_userpaperrecordBLL();
-            itembll = new tm_qa_paperitemBLL();
-            wrongBll = new tm_qa_wrongitemBLL();
-
-            tm_qa_userpaperrecord ur=  ubll.GetModel("xiang");
-            string lastitemid = string.Empty;
-            string lastwrongid = string.Empty;
-            if(ur!=null)
+            try
             {
-                lastwrongid = ur.lastwrongid;
-                lastitemid = wrongBll.GetModel(lastwrongid).itemid;
+                fatherForm = form;
+                InitializeComponent();
+                txtEword.Visible = false;
+                ubll = new tm_qa_userpaperrecordBLL();
+                itembll = new tm_qa_paperitemBLL();
+                wrongBll = new tm_qa_wrongitemBLL();
+
+                string lastwrongid = string.Empty;
+                tm_qa_userpaperrecord ur = ubll.GetModel("xiang");
+                if (ur != null)
+                {
+                    lastwrongid = ur.lastwrongid;
+                }
+                else
+                {
+                    lastwrongid = wrongBll.GetModelByOrderNumber(Currentordernumber.ToString()).wrongid;
+                }
+                BindItembyId(lastwrongid);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
-            BindItembyId(lastitemid);
         }
 
         private void BindItembyId(string lastwrongid)
@@ -55,30 +63,53 @@ namespace RestHelperUI.chlidForm
                 txtCword.Text = item.cword;
                 txtEword.Text = item.eword;
                 txtsentence.Text = item.sentence;
+                Currentordernumber = int.Parse(wrongBll.GetModel(lastwrongid).ordernumber.ToString());
             }
-
-            Currentordernumber = int.Parse(wrongBll.GetModel(lastwrongid).ordernumber.ToString());
+            txtResult.Focus();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            Next();
+        }
+
+        private void Next()
+        {
             clearText();
             Currentordernumber = Currentordernumber + 1;
             DbHelperSQLite.connectionString = "Data Source=" + Application.StartupPath + @"\taskDB.s3db";
-            if(Currentordernumber== DbHelperSQLite.GetMaxID("ordernumber", "tm_qa_wrongitem"))
+            if (Currentordernumber == DbHelperSQLite.GetMaxID("ordernumber", "tm_qa_wrongitem"))
             {
                 Currentordernumber = Currentordernumber - 1;
                 MessageBox.Show("最后一条记录！");
                 return;
             }
             tm_qa_wrongitem item = wrongBll.GetModelByOrderNumber(Currentordernumber.ToString());
-            if(item==null)
+            if (item == null)
             {
                 MessageBox.Show("没有找到相关记录！");
                 return;
             }
             string lastwrongid = item.wrongid;
             BindItembyId(lastwrongid);
+            txtResult.Focus();
+
+
+            //更新用户最后一题id
+            tm_qa_userpaperrecord ur = ubll.GetModel("xiang");
+            if (ur != null)
+            {
+                ur.lastwrongid = item.wrongid;
+                ubll.Update(ur);
+            }
+            else
+            {
+                ur = new tm_qa_userpaperrecord();
+                ur.recordid = Guid.NewGuid().ToString();
+                ur.lastwrongid = item.wrongid;
+                ubll.Add(ur);
+
+            }
         }
 
         private void btnprov_Click(object sender, EventArgs e)
@@ -101,12 +132,14 @@ namespace RestHelperUI.chlidForm
             if (txtResult.Text.ToLower().TrimEnd().TrimStart() == txtEword.Text.ToLower().TrimEnd().TrimStart())
             {
                 labResult.Text = "回答正确！";
+                deleteFromWrongDb();
+                Next();
             }
             else
             {
                 labResult.Text = "回答错误！";
                 addToWrongDb();
-            }            
+            }
         }
 
         private void addToWrongDb()
@@ -132,6 +165,32 @@ namespace RestHelperUI.chlidForm
                
             }
             catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void deleteFromWrongDb()
+        {
+            try
+            {
+                tm_qa_paperitem item = itembll.GetModelByOrderNumber(Currentordernumber.ToString());
+                tm_qa_wrongitem itemlast = wrongBll.GetModelByItemid(item.itemid);
+                if (itemlast != null)
+                {
+                    itemlast.wrongnumber = itemlast.wrongnumber - 1;
+                    if (itemlast.wrongnumber < 1)
+                    {
+                        //错误次数小于1，从错题集中删除
+                        wrongBll.Delete(itemlast.wrongid);
+                    }else
+                    {
+                        wrongBll.Update(itemlast);
+                    }
+                }
+
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }

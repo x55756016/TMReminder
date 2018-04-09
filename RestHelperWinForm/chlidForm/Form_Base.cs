@@ -10,8 +10,8 @@ namespace RestHelperUI.chlidForm
     {
         public Form_Base()
         {
-            this.BackColor =Color.White;
-            this.TransparencyKey = Color.White;
+            //this.BackColor =Color.White;
+            //this.TransparencyKey = Color.White;
         }
     }
 }
