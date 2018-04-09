@@ -36,9 +36,9 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(35, 12);
+            this.btnAdd.Location = new System.Drawing.Point(12, 12);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(98, 33);
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "添加单词";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -86,6 +86,7 @@
             this.Name = "Form_word";
             this.Text = "Form_word";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_word_FormClosing);
+            this.Load += new System.EventHandler(this.Form_word_Load);
             this.ResumeLayout(false);
 
         }

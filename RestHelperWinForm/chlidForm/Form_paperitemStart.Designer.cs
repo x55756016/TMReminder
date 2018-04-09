@@ -31,13 +31,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnprov = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labordernumber = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtsentence = new System.Windows.Forms.TextBox();
             this.txtCword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.labordernumber = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtEword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -75,6 +75,24 @@
             this.btnNext.Text = "下一题";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(310, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "序号：";
+            // 
+            // labordernumber
+            // 
+            this.labordernumber.AutoSize = true;
+            this.labordernumber.Location = new System.Drawing.Point(357, 17);
+            this.labordernumber.Name = "labordernumber";
+            this.labordernumber.Size = new System.Drawing.Size(11, 12);
+            this.labordernumber.TabIndex = 0;
+            this.labordernumber.Text = "1";
             // 
             // panel3
             // 
@@ -124,24 +142,6 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "中文解释：";
             // 
-            // labordernumber
-            // 
-            this.labordernumber.AutoSize = true;
-            this.labordernumber.Location = new System.Drawing.Point(357, 17);
-            this.labordernumber.Name = "labordernumber";
-            this.labordernumber.Size = new System.Drawing.Size(11, 12);
-            this.labordernumber.TabIndex = 0;
-            this.labordernumber.Text = "1";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(310, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "序号：";
-            // 
             // txtEword
             // 
             this.txtEword.Location = new System.Drawing.Point(74, 5);
@@ -166,7 +166,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Name = "Form_paperitemStart";
-            this.Text = "Form_paperitem";
+            this.Text = "识记单词";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_paperitemStart_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Maticsoft.BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,9 @@ namespace RestHelperUI.chlidForm
 {
     public partial class Form_word : Form_Base
     {
+        tm_qa_userpaperrecordBLL ubll;
+        tm_qa_paperitemBLL itembll;
+        tm_qa_wrongitemBLL wrongBll;
         public Form_word()
         {
             InitializeComponent();
@@ -18,6 +22,10 @@ namespace RestHelperUI.chlidForm
         {
             fatherForm = form;
             InitializeComponent();
+
+            ubll = new tm_qa_userpaperrecordBLL();
+            itembll = new tm_qa_paperitemBLL();
+            wrongBll = new tm_qa_wrongitemBLL();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -60,6 +68,12 @@ namespace RestHelperUI.chlidForm
             doTaskForm.StartPosition = FormStartPosition.CenterScreen;
             this.Hide();
             doTaskForm.Show();
+        }
+
+        private void Form_word_Load(object sender, EventArgs e)
+        {
+
+            btnAdd.Text = "添加单词（" + itembll.GetAllList().Tables[0].Rows.Count.ToString()+")";
         }
     }
 }
