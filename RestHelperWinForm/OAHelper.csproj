@@ -125,17 +125,35 @@
     <Compile Include="chlidForm\Form_congratulate.Designer.cs">
       <DependentUpon>Form_congratulate.cs</DependentUpon>
     </Compile>
+    <Compile Include="chlidForm\Form_paperitemWrong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chlidForm\Form_paperitemWrong.Designer.cs">
+      <DependentUpon>Form_paperitemWrong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="chlidForm\Form_paperitemTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chlidForm\Form_paperitemTest.Designer.cs">
+      <DependentUpon>Form_paperitemTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="chlidForm\Form_paperitemStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chlidForm\Form_paperitemStart.Designer.cs">
+      <DependentUpon>Form_paperitemStart.cs</DependentUpon>
+    </Compile>
     <Compile Include="chlidForm\Form_paperitemADD.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="chlidForm\Form_paperitemADD.Designer.cs">
       <DependentUpon>Form_paperitemADD.cs</DependentUpon>
     </Compile>
-    <Compile Include="chlidForm\Form_paperitem.cs">
+    <Compile Include="chlidForm\Form_word.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="chlidForm\Form_paperitem.Designer.cs">
-      <DependentUpon>Form_paperitem.cs</DependentUpon>
+    <Compile Include="chlidForm\Form_word.Designer.cs">
+      <DependentUpon>Form_word.cs</DependentUpon>
     </Compile>
     <Compile Include="chlidForm\zjb.cs">
       <SubType>Form</SubType>
@@ -187,11 +205,20 @@
     <EmbeddedResource Include="chlidForm\Form_congratulate.resx">
       <DependentUpon>Form_congratulate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="chlidForm\Form_paperitemWrong.resx">
+      <DependentUpon>Form_paperitemWrong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="chlidForm\Form_paperitemTest.resx">
+      <DependentUpon>Form_paperitemTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="chlidForm\Form_paperitemStart.resx">
+      <DependentUpon>Form_paperitemStart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="chlidForm\Form_paperitemADD.resx">
       <DependentUpon>Form_paperitemADD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="chlidForm\Form_paperitem.resx">
-      <DependentUpon>Form_paperitem.cs</DependentUpon>
+    <EmbeddedResource Include="chlidForm\Form_word.resx">
+      <DependentUpon>Form_word.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="chlidForm\zjb.resx">
       <DependentUpon>zjb.cs</DependentUpon>

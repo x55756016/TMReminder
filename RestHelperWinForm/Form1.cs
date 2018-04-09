@@ -234,12 +234,12 @@ namespace RestHelperUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form_paperitemADD doTaskForm = new Form_paperitemADD(this);
-                    doTaskForm.TopMost = true;
-                    doTaskForm.StartPosition = FormStartPosition.CenterScreen;
-                    this.Hide();
-                    doTaskForm.Show();
-            
+            Form_word doTaskForm = new Form_word(this);
+            doTaskForm.TopMost = true;
+            doTaskForm.StartPosition = FormStartPosition.CenterScreen;
+            this.Hide();
+            doTaskForm.Show();
+
         }
     }
 }

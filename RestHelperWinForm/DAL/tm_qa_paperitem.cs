@@ -128,45 +128,81 @@ SQLiteParameter[] parameters = {
 				return false;
 			}
 		}
-		
-				
+
+
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public Maticsoft.Model.tm_qa_paperitem GetModelByOrderNumber(string orderNumber)
+        {
+
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select itemid, ordernumber, eword, cword, sentence  ");
+            strSql.Append("  from tm_qa_paperitem ");
+            strSql.Append(" where ordernumber=@ordernumber ");
+            SQLiteParameter[] parameters = {
+					new SQLiteParameter("@ordernumber", DbType.String,50)};
+            parameters[0].Value = orderNumber;
+
+
+            Maticsoft.Model.tm_qa_paperitem model = new Maticsoft.Model.tm_qa_paperitem();
+            DataSet ds = DbHelperSQLite.Query(strSql.ToString(), parameters);
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                model.itemid = ds.Tables[0].Rows[0]["itemid"].ToString();
+                if (ds.Tables[0].Rows[0]["ordernumber"].ToString() != "")
+                {
+                    model.ordernumber = decimal.Parse(ds.Tables[0].Rows[0]["ordernumber"].ToString());
+                }
+                model.eword = ds.Tables[0].Rows[0]["eword"].ToString();
+                model.cword = ds.Tables[0].Rows[0]["cword"].ToString();
+                model.sentence = ds.Tables[0].Rows[0]["sentence"].ToString();
+
+                return model;
+            }
+            else
+            {
+                return null;
+            }
+        }
 		
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public Maticsoft.Model.tm_qa_paperitem GetModel(string itemid)
-		{
-			
-			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select itemid, ordernumber, eword, cword, sentence  ");			
-			strSql.Append("  from tm_qa_paperitem ");
-			strSql.Append(" where itemid=@itemid ");
-						SQLiteParameter[] parameters = {
-					new SQLiteParameter("@itemid", DbType.String,50)			};
-			parameters[0].Value = itemid;
+        public Maticsoft.Model.tm_qa_paperitem GetModel(string itemid)
+        {
 
-			
-			Maticsoft.Model.tm_qa_paperitem model=new Maticsoft.Model.tm_qa_paperitem();
-			DataSet ds=DbHelperSQLite.Query(strSql.ToString(),parameters);
-			
-			if(ds.Tables[0].Rows.Count>0)
-			{
-																model.itemid= ds.Tables[0].Rows[0]["itemid"].ToString();
-																												if(ds.Tables[0].Rows[0]["ordernumber"].ToString()!="")
-				{
-					model.ordernumber=decimal.Parse(ds.Tables[0].Rows[0]["ordernumber"].ToString());
-				}
-																																				model.eword= ds.Tables[0].Rows[0]["eword"].ToString();
-																																model.cword= ds.Tables[0].Rows[0]["cword"].ToString();
-																																model.sentence= ds.Tables[0].Rows[0]["sentence"].ToString();
-																										
-				return model;
-			}
-			else
-			{
-				return null;
-			}
-		}
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select itemid, ordernumber, eword, cword, sentence  ");
+            strSql.Append("  from tm_qa_paperitem ");
+            strSql.Append(" where itemid=@itemid ");
+            SQLiteParameter[] parameters = {
+					new SQLiteParameter("@itemid", DbType.String,50)};
+            parameters[0].Value = itemid;
+
+
+            Maticsoft.Model.tm_qa_paperitem model = new Maticsoft.Model.tm_qa_paperitem();
+            DataSet ds = DbHelperSQLite.Query(strSql.ToString(), parameters);
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                model.itemid = ds.Tables[0].Rows[0]["itemid"].ToString();
+                if (ds.Tables[0].Rows[0]["ordernumber"].ToString() != "")
+                {
+                    model.ordernumber = decimal.Parse(ds.Tables[0].Rows[0]["ordernumber"].ToString());
+                }
+                model.eword = ds.Tables[0].Rows[0]["eword"].ToString();
+                model.cword = ds.Tables[0].Rows[0]["cword"].ToString();
+                model.sentence = ds.Tables[0].Rows[0]["sentence"].ToString();
+
+                return model;
+            }
+            else
+            {
+                return null;
+            }
+        }
 		
 		
 		/// <summary>

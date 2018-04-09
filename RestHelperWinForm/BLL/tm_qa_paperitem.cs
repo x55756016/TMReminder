@@ -52,10 +52,16 @@ namespace Maticsoft.BLL {
 		/// 得到一个对象实体
 		/// </summary>
 		public Maticsoft.Model.tm_qa_paperitem GetModel(string itemid)
-		{
-			
+		{			
 			return dal.GetModel(itemid);
 		}
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public Maticsoft.Model.tm_qa_paperitem GetModelByOrderNumber(string ordernumber)
+        {
+            return dal.GetModelByOrderNumber(ordernumber);
+        }
 
 		/// <summary>
 		/// 得到一个对象实体，从缓存中

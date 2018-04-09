@@ -18,8 +18,8 @@ namespace RestHelperUI.chlidForm
             InitializeComponent();
 
         }
-         private Form1 fatherForm;
-         public Form_paperitemADD(Form1 form)
+        private Form fatherForm;
+         public Form_paperitemADD(Form form)
         {
             fatherForm = form;
             InitializeComponent();
@@ -27,15 +27,34 @@ namespace RestHelperUI.chlidForm
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            tm_qa_paperitem item = new tm_qa_paperitem();
-            item.itemid = Guid.NewGuid().ToString();
-            item.ordernumber = DbHelperSQLite.GetMaxID("ordernumber", "tm_qa_paperitem");
-            item.eword = txtEword.Text;
-            item.cword = txtCword.Text;
-            item.sentence = txtsentence.Text;
+            try
+            {
+                tm_qa_paperitem item = new tm_qa_paperitem();
+                item.itemid = Guid.NewGuid().ToString();
+                DbHelperSQLite.connectionString = "Data Source=" + Application.StartupPath + @"\taskDB.s3db";
+                item.ordernumber = DbHelperSQLite.GetMaxID("ordernumber", "tm_qa_paperitem");
+                item.eword = txtEword.Text;
+                item.cword = txtCword.Text;
+                item.sentence = txtsentence.Text;
 
+                tm_qa_paperitemBLL bll = new tm_qa_paperitemBLL();
+                bll.Add(item);
+                MessageBox.Show("保存成功！");
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
             tm_qa_paperitemBLL bll = new tm_qa_paperitemBLL();
-            bll.Add(item);
+            bll.Delete("");
+        }
+
+        private void Form_paperitemADD_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            fatherForm.Show();
         }
     }
 }
