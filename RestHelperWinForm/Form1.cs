@@ -210,8 +210,8 @@ namespace RestHelperUI
                 this.StartPosition = FormStartPosition.CenterScreen;
                 SoftUpdateHelper app = new SoftUpdateHelper();
                 app.StartCheckUpdate();
-                loadData();
                 timer1.Start();
+                loadData();
             }
             catch (Exception ex)
             {
