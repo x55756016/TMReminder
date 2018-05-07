@@ -47,14 +47,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 512);
+            this.panel1.Size = new System.Drawing.Size(525, 259);
             this.panel1.TabIndex = 0;
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
             this.labelName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelName.Location = new System.Drawing.Point(224, 57);
+            this.labelName.Location = new System.Drawing.Point(222, 34);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(40, 16);
             this.labelName.TabIndex = 3;
@@ -62,7 +62,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(656, 442);
+            this.button1.Location = new System.Drawing.Point(205, 197);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 36);
             this.button1.TabIndex = 2;
@@ -74,19 +74,19 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(39, 13);
+            this.label1.Location = new System.Drawing.Point(185, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(760, 16);
+            this.label1.Size = new System.Drawing.Size(120, 16);
             this.label1.TabIndex = 1;
-            this.label1.Text = "“慢性筋骨病”是中老年人的常见病、多发病，且呈现年轻化趋势。一旦患上慢性筋骨病，将会苦不堪言。";
+            this.label1.Text = "预防治疗颈椎病";
             // 
             // txtcontext
             // 
             this.txtcontext.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtcontext.Location = new System.Drawing.Point(39, 101);
+            this.txtcontext.Location = new System.Drawing.Point(21, 53);
             this.txtcontext.Multiline = true;
             this.txtcontext.Name = "txtcontext";
-            this.txtcontext.Size = new System.Drawing.Size(734, 290);
+            this.txtcontext.Size = new System.Drawing.Size(479, 128);
             this.txtcontext.TabIndex = 0;
             // 
             // timer1
@@ -98,7 +98,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 512);
+            this.ClientSize = new System.Drawing.Size(525, 259);
             this.Controls.Add(this.panel1);
             this.Name = "zjbForm";
             this.Text = "预防慢性筋骨病";

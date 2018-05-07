@@ -228,6 +228,8 @@ namespace RestHelperUI
         private void button9_Click(object sender, EventArgs e)
         {
             zjbForm zform = new zjbForm(this);
+            zform.TopMost = true;
+            zform.StartPosition = FormStartPosition.CenterScreen;
             zform.Show();
             this.Hide();
         }
