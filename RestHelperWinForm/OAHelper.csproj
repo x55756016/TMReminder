@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RestHelperUI</RootNamespace>
-    <AssemblyName>OAHelper</AssemblyName>
+    <AssemblyName>RestHelperUI</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -190,11 +190,11 @@
     <Compile Include="DAL\TaskDAL.cs" />
     <Compile Include="SQLiteHelper.cs" />
     <Compile Include="ExportCSV.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Form_Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Form_Main.Designer.cs">
+      <DependentUpon>Form_Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -226,8 +226,8 @@
     <EmbeddedResource Include="chlidForm\zjb.resx">
       <DependentUpon>zjb.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Form_Main.resx">
+      <DependentUpon>Form_Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -252,6 +252,7 @@
   <ItemGroup>
     <None Include="Resources\timg.gif" />
     <None Include="Resources\congratu.wav" />
+    <Content Include="favicon-20180625040454744.ico" />
     <Content Include="silverlight.ico" />
     <Content Include="SqlLite\Foundation.Log.dll" />
     <Content Include="SqlLite\System.Data.SQLite.dll" />

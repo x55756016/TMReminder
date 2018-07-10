@@ -14,9 +14,9 @@ namespace RestHelperUI.chlidForm
     public partial class DoTaskForm : Form
     {
         private int maxTime = 600;//s
-        private Form1 fatherForm;
+        private Form_Main fatherForm;
         private TaskClass Taskobj;
-        public DoTaskForm(Form1 form, int ordernumber)
+        public DoTaskForm(Form_Main form, int ordernumber)
         {
             fatherForm = form;
             InitializeComponent();

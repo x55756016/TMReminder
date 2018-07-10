@@ -22,7 +22,7 @@ namespace RestHelperUI
                 LogHelper.WriteErrLog("开始启动");
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Form1());
+                Application.Run(new Form_Main());
             }
             catch (Exception ex)
             {

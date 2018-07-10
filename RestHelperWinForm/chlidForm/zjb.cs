@@ -11,8 +11,8 @@ namespace RestHelperUI.chlidForm
     public partial class zjbForm : Form
     {
         private List<wuqingxi> wqxList = new List<wuqingxi>();
-        private Form1 fatherForm;
-        public zjbForm(Form1 form)
+        private Form_Main fatherForm;
+        public zjbForm(Form_Main form)
         {
             fatherForm = form;
             InitializeComponent();

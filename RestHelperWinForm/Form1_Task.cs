@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace RestHelperUI
 {    
-    public partial class Form1
+    public partial class Form_Main
     {
         private void loadData()
         {
@@ -42,36 +42,30 @@ namespace RestHelperUI
 
         }
 
-        /// <summary>
-        /// 查询待办任务
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnGetTask_Click(object sender, EventArgs e)
+
+        private void radioBtn_CheckedChange(object sender, EventArgs e)
         {
-            //DataTable dt = TaskDBHelper.ReadTaskData(0);
-            //dtDotask.DataSource = dt;
-            loadData();
-        }
-        /// <summary>
-        /// 查询已办任务
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnCompleteTask_Click(object sender, EventArgs e)
-        {
-            DataTable dt = TaskDAL.ReadTaskData(1);
-            dtDotask.DataSource = dt;
-        }
-        /// <summary>
-        /// 查询所有任务
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnGetAllTask_Click(object sender, EventArgs e)
-        {
-            DataTable dt = TaskDAL.ReadTaskData(2);
-            dtDotask.DataSource = dt;
+            if (!((RadioButton)sender).Checked)
+            {
+                return;
+            }
+            switch (((RadioButton)sender).Text.ToString())
+            {
+                case "待办任务":
+                    loadData();
+                    break;
+                case "已办任务":
+                    DataTable dt = TaskDAL.ReadTaskData(1);
+                    dtDotask.DataSource = dt;
+                    break;
+                case "全部任务":
+                    DataTable dt2 = TaskDAL.ReadTaskData(2);
+                    dtDotask.DataSource = dt2;
+                    break;
+                default:
+                    loadData();
+                    break;
+            }
         }
         /// <summary>
         /// 导出任务清单
